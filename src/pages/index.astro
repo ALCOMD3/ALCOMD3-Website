@@ -1,0 +1,77 @@
+---
+import { siteConfig } from "../config";
+---
+
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={siteConfig.description} />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{siteConfig.title}</title>
+    </head>
+    <body>
+        <main>
+            <p class="eyebrow">官方网站</p>
+            <h1>{siteConfig.name}</h1>
+            <p class="status">网站正在建设中。</p>
+        </main>
+    </body>
+</html>
+
+<style>
+    :global(*) {
+        box-sizing: border-box;
+    }
+
+    :global(html) {
+        background: #f0eee8;
+        color: #171713;
+        font-family: "Noto Serif SC", "Songti SC", serif;
+    }
+
+    :global(body) {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    main {
+        display: grid;
+        min-height: 100vh;
+        align-content: center;
+        padding: clamp(2rem, 8vw, 8rem);
+        background:
+            linear-gradient(90deg, rgb(23 23 19 / 8%) 1px, transparent 1px),
+            linear-gradient(rgb(23 23 19 / 8%) 1px, transparent 1px);
+        background-size: 3rem 3rem;
+    }
+
+    .eyebrow {
+        margin: 0 0 1rem;
+        color: #b33a24;
+        font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+    }
+
+    h1 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(4rem, 16vw, 12rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.85;
+    }
+
+    .status {
+        width: fit-content;
+        margin: 2.5rem 0 0;
+        padding-top: 0.75rem;
+        border-top: 2px solid #171713;
+        font-size: clamp(1rem, 2vw, 1.25rem);
+    }
+</style>
+
