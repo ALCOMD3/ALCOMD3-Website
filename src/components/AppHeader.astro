@@ -61,7 +61,7 @@ const themeOptions = [
                             href={getRelativeLocaleUrl(language, pagePath)}
                             data-language={language}
                             data-ui-locale={locales[language].uiLocale}
-                            selected={language === locale.lang}
+                            selected={language === locale.lang ? true : undefined}
                         >
                             <div slot="headline">{languageNames[language]}</div>
                         </md-menu-item>

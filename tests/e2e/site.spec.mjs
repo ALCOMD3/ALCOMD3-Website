@@ -34,6 +34,13 @@ test("all localized routes build and expose the three-control header", async ({ 
             const response = await page.goto(`/${locale}/${path}`);
             expect(response?.ok()).toBe(true);
             await expect(page.locator("html")).toHaveAttribute("lang", /.+/);
+            expect(
+                await page.locator("[data-language]").evaluateAll((items) => (
+                    items
+                        .filter((item) => item.hasAttribute("selected"))
+                        .map((item) => item.getAttribute("data-language"))
+                )),
+            ).toEqual([locale]);
         }
     }
 
@@ -56,6 +63,9 @@ test("theme and language controls persist explicit choices", async ({ page }) =>
     await page.locator("#language-menu-anchor").click();
     const languageItems = page.locator("[data-language]");
     await expect(languageItems).toHaveCount(supportedRouteLocales.length);
+    await page.locator('[data-language="zh-cn"]').click();
+    await expect(page).toHaveURL(/\/zh-cn\/$/);
+    expect(await page.evaluate(() => localStorage.getItem("ui_locale"))).toBe("zh-CN");
 });
 
 test("contributors appear only after a valid non-empty GitHub response", async ({ page }) => {
