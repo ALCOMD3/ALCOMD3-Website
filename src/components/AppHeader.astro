@@ -10,7 +10,7 @@ type Props = {
 };
 
 const { locale, pagePath = "" } = Astro.props;
-const homeHref = getRelativeLocaleUrl(locale.lang, "");
+const homeHref = Astro.site ? new URL("/", Astro.site).pathname : "/";
 const themeOptions = [
     {
         value: "system",
