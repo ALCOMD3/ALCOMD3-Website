@@ -1,20 +1,20 @@
 {
-  "version": "3.0.0-beta.1",
-  "notes": "ALCOMD3 v3.0.0-beta.1. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1 for details.",
+  "version": "3.0.0-beta.2",
+  "notes": "ALCOMD3 v3.0.0-beta.2. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2 for details.",
   "notes_i18n": {
-    "de": "Startet die unabhängige ALCOMD3-3.0-Versionsreihe und vereinfacht das Laden der Mitwirkenden über die GitHub-API.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1",
-    "en": "Starts the independent ALCOMD3 3.0 release line and simplifies contributor loading through the GitHub API.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1",
-    "fr": "Lance la série indépendante ALCOMD3 3.0 et simplifie le chargement des contributeurs via l’API GitHub.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1",
-    "ja": "独立した ALCOMD3 3.0 のリリース系列を開始し、GitHub API によるコントリビューター取得を簡素化します。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1",
-    "ko": "독립적인 ALCOMD3 3.0 릴리스 계열을 시작하고 GitHub API를 통한 기여자 정보 로드를 단순화합니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1",
-    "zh_hans": "开启独立的 ALCOMD3 3.0 发布序列，并通过 GitHub API 简化贡献者信息加载。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1",
-    "zh_hant": "開啟獨立的 ALCOMD3 3.0 發佈序列，並透過 GitHub API 簡化貢獻者資訊載入。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.1"
+    "de": "Die Website-Veröffentlichung ist jetzt vom Anwendungsrepository getrennt; Updater-Metadaten werden direkt im dedizierten Website-Repository veröffentlicht.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2",
+    "en": "Website publishing is now separated from the application repository, with updater metadata published directly to the dedicated website repository.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2",
+    "fr": "La publication du site est désormais séparée du dépôt de l’application, et les métadonnées de mise à jour sont publiées directement dans le dépôt dédié au site.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2",
+    "ja": "Web サイトの公開をアプリケーションリポジトリから分離し、updater metadata を専用 Web サイトリポジトリへ直接公開するようにしました。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2",
+    "ko": "웹사이트 게시를 애플리케이션 저장소에서 분리하고 updater 메타데이터를 전용 웹사이트 저장소에 직접 게시하도록 변경했습니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2",
+    "zh_hans": "网站发布现已与应用仓库分离，updater 元数据会直接发布到独立的网站仓库。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2",
+    "zh_hant": "網站發佈現已與應用程式儲存庫分離，updater 中繼資料會直接發佈到獨立的網站儲存庫。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0-beta.2"
   },
-  "pub_date": "2026-07-23T22:50:53Z",
+  "pub_date": "2026-07-24T06:28:17Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1R6NzlKRzRXWktzMzhiNTVESTUxd0Z1UlBWVVJJTXRWUnZWNkJXdHNsMWpEa1RnZ01rUzRyRlFxdzdxU2RBZGlLR0Jsd0NUZ3Q3dHR2ZmhqRXJkK0FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODQ2OTA4CWZpbGU6QUxDT01EM18zLjAuMC1iZXRhLjFfd2luZG93c194ODZfNjRfc2V0dXAuZXhlCXB1cnBvc2U6cmVsZWFzZQpDN1JRWDcwWW5mT2tDbVlOUFEwalpGSUIxRGpYcndaakdTUThLWlA2dXk1TFdzWDgxYlp4WXRhM3RGL2V1VnFzNjV0d3dJWnJydHBFcjF6ak9Xc1dEQT09Cg==",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0-beta.1/ALCOMD3_3.0.0-beta.1_windows_x86_64_setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1p3WTJWZG1PS0xHdGxYOHhLbVhkVFZySHh3aG5DaG1aL2o4alhydFhkdzVlYW5DVGU0c0FtWmpEVXNOam1TUGJTZ3VaZHRrSnBPeDNBandKbTlaMkFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODc0NDAxCWZpbGU6QUxDT01EM18zLjAuMC1iZXRhLjJfd2luZG93c194ODZfNjRfc2V0dXAuZXhlCXB1cnBvc2U6cmVsZWFzZQpzaC9ZZ3pKMzQyMjN4MlJkbnB5WnFxSll2OWc1QmFEbnpJOE1QRVNFZWN2eitnUG9VQUhXR1dOQVhGTmtGL2hFenFGWHZzSzJUUDh4dmRjZjg5Yk1Cdz09Cg==",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0-beta.2/ALCOMD3_3.0.0-beta.2_windows_x86_64_setup.exe",
       "args": [
         "/SP-",
         "/SILENT",
@@ -24,13 +24,13 @@
       ]
     },
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1dVdnpVZTN2dTNqSlhacHhrSXVPNjNNZlhNNG4xS0kwTkkwT2Y2K0QrN1JZaEdKME9MdnFRUXlaTGNqZlFxYUxiMVZpSEtnOXI0dVdwbkROVi9CSUEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODQ2OTE0CWZpbGU6QUxDT01EM18zLjAuMC1iZXRhLjFfbWFjb3NfYWFyY2g2NC5hcHAudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQpuVEFoRmJoanlyZ2ZUNjR2ZGZrdEF3Z1dob3RmUnVFWWtmMFRSN3FKZGtBRXE3cCszMG5TVHREYXV1aGdSdW9mSGxWQ3BZZHZFV3NYQTRUTGtEZG1CZz09Cg==",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0-beta.1/ALCOMD3_3.0.0-beta.1_macos_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1FEazlRNlE3NjJNaXpBU3dhdFRyeHhiajlpUTI2RzVncGRxeGRlUXJHSlEzSWpJaFFqR29abTVINUp2L1M0RXB3b0I4bnlub2VxTlk4VjdvVmVvU1FBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODc0NDA3CWZpbGU6QUxDT01EM18zLjAuMC1iZXRhLjJfbWFjb3NfYWFyY2g2NC5hcHAudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQoxaGxya1pKTnBSdlY0emU0VzljQXYxQTF4Z29McFNFVlpKRzMrZjFGYVpqV29sdXdvcno4a2hoOTZUMkFrdFlNVFFSNG1qMkdhQndoMVRaNkduVFlBUT09Cg==",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0-beta.2/ALCOMD3_3.0.0-beta.2_macos_aarch64.app.tar.gz",
       "args": []
     },
     "linux-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1dGNUpkMFlZS25TdzhGWWdCcW1RZVF4dnNSVFdDT3AzZFJpZm00cWxtYTVDc1VQKzY0RmZpYWtzRXdkY0NxbzdmaThpWG9aWGV3VU9xWENUVVFYK2dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODQ2OTIwCWZpbGU6QUxDT01EM18zLjAuMC1iZXRhLjFfbGludXhfeDg2XzY0LkFwcEltYWdlLnRhci5neglwdXJwb3NlOnJlbGVhc2UKUk5DTVZ6Q2dGY3YwcithYm91WStTejlLOGtZNDJJK0VZa1JRMW1VSDNEUW9GZkJZSnAvOWxFSE9BelNwclJMMDUzSXg0b0RjK1pPUUV3SzM5MmZYQ3c9PQo=",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0-beta.1/ALCOMD3_3.0.0-beta.1_linux_x86_64.AppImage.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1lNbHBhdnphVWJreE9RM2NZeGRQblR2c0M4aGxTaTMwcVNoNEY1bTAvZjh6amZ3dFMxR2YzWitucHNaZ2JkT3RYZ00yV2tMS0xwYzR0dzJQbDdNTUFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODc0NDEzCWZpbGU6QUxDT01EM18zLjAuMC1iZXRhLjJfbGludXhfeDg2XzY0LkFwcEltYWdlLnRhci5neglwdXJwb3NlOnJlbGVhc2UKUVZNUmg0bVJIblZsbktXdHVRVENocytkM3lRaXhkMmY3ckJMYStFV2ZuWFM0R1VsRjZHSUdheUxnQlpBUGo1NTdOVmordFhzSVgveVdDaWUvWkZuQnc9PQo=",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0-beta.2/ALCOMD3_3.0.0-beta.2_linux_x86_64.AppImage.tar.gz",
       "args": []
     }
   }
