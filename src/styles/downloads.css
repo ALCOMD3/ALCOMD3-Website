@@ -71,6 +71,13 @@
     color: var(--md-sys-color-on-secondary-container);
 }
 
+.download-notice md-icon,
+.button-link md-icon,
+.download-unavailable md-icon,
+.release-link md-icon {
+    font-size: 1.5rem;
+}
+
 .download-platform-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));

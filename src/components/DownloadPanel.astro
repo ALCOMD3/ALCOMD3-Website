@@ -1,5 +1,6 @@
 ---
 import BrandIcon from "@/components/BrandIcon.astro";
+import MaterialIcon from "@/components/MaterialIcon.astro";
 import {
     siteConfig,
     type DownloadChannel,
@@ -117,7 +118,7 @@ const catalogs = (siteConfig.downloadChannels as DownloadCatalog[]).map((catalog
 
                         {channelNotice && (
                             <p class="download-notice" data-download-channel-notice>
-                                <span class="material-symbols-rounded" aria-hidden="true">info</span>
+                                <MaterialIcon name="info" />
                                 <span>{channelNotice}</span>
                             </p>
                         )}
@@ -183,12 +184,7 @@ const catalogs = (siteConfig.downloadChannels as DownloadCatalog[]).map((catalog
                                                                 data-download-channel={catalog.channel}
                                                                 data-download-platform={platform.key}
                                                             >
-                                                                <span
-                                                                    class="material-symbols-rounded"
-                                                                    aria-hidden="true"
-                                                                >
-                                                                    download
-                                                                </span>
+                                                                <MaterialIcon name="download" />
                                                                 <span>{format}</span>
                                                             </a>
                                                         );
@@ -196,12 +192,7 @@ const catalogs = (siteConfig.downloadChannels as DownloadCatalog[]).map((catalog
                                                 </div>
                                             ) : (
                                                 <p class="download-unavailable" data-download-unavailable>
-                                                    <span
-                                                        class="material-symbols-rounded"
-                                                        aria-hidden="true"
-                                                    >
-                                                        schedule
-                                                    </span>
+                                                    <MaterialIcon name="schedule" />
                                                     <span>{content.unavailable}</span>
                                                 </p>
                                             )}
@@ -219,9 +210,7 @@ const catalogs = (siteConfig.downloadChannels as DownloadCatalog[]).map((catalog
                             data-download-release-link={catalog.channel}
                         >
                             <span>{releasePageLabel}</span>
-                            <span class="material-symbols-rounded" aria-hidden="true">
-                                open_in_new
-                            </span>
+                            <MaterialIcon name="open_in_new" />
                         </a>
                     </section>
                 );

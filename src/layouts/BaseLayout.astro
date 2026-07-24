@@ -1,10 +1,10 @@
 ---
-import "@fontsource-variable/material-symbols-rounded/wght.css";
-import "@fontsource-variable/noto-sans/wght.css";
-import "@fontsource-variable/noto-sans-jp/wght.css";
-import "@fontsource-variable/noto-sans-mono/wght.css";
-import "@fontsource-variable/noto-sans-sc/wght.css";
-import "@fontsource-variable/noto-sans-tc/wght.css";
+import notoSansLatinFont from "@fontsource-variable/noto-sans/files/noto-sans-latin-wght-normal.woff2?url";
+import notoSansStylesheet from "@/styles/fonts/noto-sans.css?url";
+import notoSansJpStylesheet from "@/styles/fonts/noto-sans-jp.css?url";
+import notoSansMonoStylesheet from "@/styles/fonts/noto-sans-mono.css?url";
+import notoSansScStylesheet from "@/styles/fonts/noto-sans-sc.css?url";
+import notoSansTcStylesheet from "@/styles/fonts/noto-sans-tc.css?url";
 import "@/generated/theme.css";
 import "@/styles/global.css";
 import { getAlternateLocaleLinks, getCanonicalUrl } from "@/data/seo";
@@ -33,6 +33,17 @@ const {
 
 const canonicalUrl = getCanonicalUrl(locale.lang, pagePath);
 const alternateLocaleLinks = getAlternateLocaleLinks(pagePath);
+const localeFontStylesheet = {
+    "zh-CN": notoSansScStylesheet,
+    "zh-TW": notoSansTcStylesheet,
+    "ja-JP": notoSansJpStylesheet,
+    "en-US": null,
+}[locale.uiLocale];
+const fontStylesheets = [
+    notoSansStylesheet,
+    localeFontStylesheet,
+    pagePath === siteConfig.mcpDocsPath ? notoSansMonoStylesheet : null,
+].filter((stylesheet): stylesheet is string => Boolean(stylesheet));
 const siteUrl = Astro.site ?? new URL(canonicalUrl);
 const ogImageUrl = new URL(siteConfig.ogImagePath, siteUrl).href;
 const logoUrl = new URL(siteConfig.logoPath, siteUrl).href;
@@ -131,6 +142,16 @@ const themeBootstrapConfig = {
         <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
         <link rel="apple-touch-icon" href="/assets/icon-128.png">
         <link rel="manifest" href="/site.webmanifest">
+        <link
+            rel="preload"
+            href={notoSansLatinFont}
+            as="font"
+            type="font/woff2"
+            crossorigin
+        >
+        {fontStylesheets.map((stylesheet) => (
+            <link rel="stylesheet" href={stylesheet}>
+        ))}
         <script
             is:inline
             type="application/json"

@@ -39,6 +39,7 @@
 html {
     min-width: 20rem;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
     background: var(--md-sys-color-surface);
     color: var(--md-sys-color-on-surface);
     scroll-behavior: smooth;
@@ -105,15 +106,34 @@ a {
     fill: currentcolor;
 }
 
-md-icon,
-.material-symbols-rounded {
-    --md-icon-font: "Material Symbols Rounded Variable";
-    font-family: "Material Symbols Rounded Variable";
-    font-variation-settings:
-        "FILL" 0,
-        "wght" 500,
-        "GRAD" 0,
-        "opsz" 24;
+md-icon {
+    display: inline-flex;
+    width: 1em;
+    height: 1em;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+md-icon > svg {
+    width: 100%;
+    height: 100%;
+    fill: currentcolor;
+}
+
+md-menu:not(:defined) {
+    display: none;
+}
+
+md-filled-button:not(:defined),
+md-filled-tonal-button:not(:defined),
+md-outlined-button:not(:defined) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
 }
 
 .app-header {
@@ -163,6 +183,20 @@ md-icon,
     --md-filled-tonal-icon-button-container-width: 3rem;
     --md-filled-tonal-icon-button-container-height: 3rem;
     --md-filled-tonal-icon-button-icon-size: 1.55rem;
+}
+
+.header-actions md-filled-tonal-icon-button:not(:defined) {
+    display: inline-flex;
+    width: var(--md-filled-tonal-icon-button-container-width);
+    height: var(--md-filled-tonal-icon-button-container-height);
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.header-actions md-icon {
+    font-size: 1.55rem;
 }
 
 .header-actions md-filled-tonal-icon-button .brand-icon {
@@ -243,6 +277,16 @@ md-menu-item {
     --md-filled-button-label-text-size: 1rem;
     --md-outlined-button-container-height: 3.5rem;
     --md-outlined-button-label-text-size: 1rem;
+}
+
+.hero-actions md-filled-button:not(:defined),
+.hero-actions md-outlined-button:not(:defined) {
+    min-height: 3.5rem;
+}
+
+.hero-actions .brand-icon {
+    width: 1em;
+    height: 1em;
 }
 
 .release-note {
@@ -464,6 +508,10 @@ md-menu-item {
     --md-filled-tonal-button-container-height: 3.25rem;
 }
 
+.section-action md-filled-tonal-button:not(:defined) {
+    min-height: 3.25rem;
+}
+
 .resources-section {
     background: var(--md-sys-color-surface);
 }
@@ -501,6 +549,7 @@ md-menu-item {
 
 .resource-card md-icon {
     color: var(--md-sys-color-primary);
+    font-size: 1.5rem;
 }
 
 .contributors-section {

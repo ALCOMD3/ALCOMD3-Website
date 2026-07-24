@@ -21,13 +21,13 @@
     },
     "dependencies": {
         "@astrojs/sitemap": "^3.7.3",
-        "@fontsource-variable/material-symbols-rounded": "^5.3.0",
         "@fontsource-variable/noto-sans": "^5.3.0",
         "@fontsource-variable/noto-sans-jp": "^5.3.0",
         "@fontsource-variable/noto-sans-mono": "^5.3.0",
         "@fontsource-variable/noto-sans-sc": "^5.3.0",
         "@fontsource-variable/noto-sans-tc": "^5.3.0",
         "@fortawesome/free-brands-svg-icons": "^7.3.1",
+        "@material-symbols/svg-500": "^0.45.8",
         "@material/material-color-utilities": "^0.3.0",
         "@material/web": "^2.5.0",
         "astro": "^7.1.3"

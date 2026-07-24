@@ -1,0 +1,55 @@
+---
+import code from "@material-symbols/svg-500/rounded/code.svg?raw";
+import contrast from "@material-symbols/svg-500/rounded/contrast.svg?raw";
+import darkMode from "@material-symbols/svg-500/rounded/dark_mode.svg?raw";
+import desktopWindows from "@material-symbols/svg-500/rounded/desktop_windows.svg?raw";
+import download from "@material-symbols/svg-500/rounded/download.svg?raw";
+import hub from "@material-symbols/svg-500/rounded/hub.svg?raw";
+import info from "@material-symbols/svg-500/rounded/info.svg?raw";
+import lightMode from "@material-symbols/svg-500/rounded/light_mode.svg?raw";
+import menuBook from "@material-symbols/svg-500/rounded/menu_book.svg?raw";
+import openInNew from "@material-symbols/svg-500/rounded/open_in_new.svg?raw";
+import palette from "@material-symbols/svg-500/rounded/palette.svg?raw";
+import progressActivity from "@material-symbols/svg-500/rounded/progress_activity.svg?raw";
+import schedule from "@material-symbols/svg-500/rounded/schedule.svg?raw";
+import shieldLock from "@material-symbols/svg-500/rounded/shield_lock.svg?raw";
+import systemUpdateAlt from "@material-symbols/svg-500/rounded/system_update_alt.svg?raw";
+import translate from "@material-symbols/svg-500/rounded/translate.svg?raw";
+import visibility from "@material-symbols/svg-500/rounded/visibility.svg?raw";
+
+const icons = {
+    code,
+    contrast,
+    dark_mode: darkMode,
+    desktop_windows: desktopWindows,
+    download,
+    hub,
+    info,
+    light_mode: lightMode,
+    menu_book: menuBook,
+    open_in_new: openInNew,
+    palette,
+    progress_activity: progressActivity,
+    schedule,
+    shield_lock: shieldLock,
+    system_update_alt: systemUpdateAlt,
+    translate,
+    visibility,
+} as const;
+
+type Props = {
+    name: keyof typeof icons;
+    class?: string;
+    slot?: string;
+};
+
+const { name, ...attributes } = Astro.props;
+---
+
+<md-icon {...attributes} aria-hidden="true">
+    <Fragment set:html={icons[name]} />
+</md-icon>
+
+<script>
+    import "@material/web/icon/icon.js";
+</script>

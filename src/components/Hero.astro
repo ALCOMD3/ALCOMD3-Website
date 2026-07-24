@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import BrandIcon from "@/components/BrandIcon.astro";
+import MaterialIcon from "@/components/MaterialIcon.astro";
 import PlatformSummary from "@/components/PlatformSummary.astro";
 import { siteConfig, type DownloadChannel, type LocaleContent } from "@/data/site";
 
@@ -25,7 +26,7 @@ const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
             <p class="hero-description">{locale.tagline}</p>
             <div class="hero-actions">
                 <md-filled-button href={downloadHref}>
-                    <md-icon slot="icon">download</md-icon>
+                    <MaterialIcon name="download" slot="icon" />
                     {locale.downloads.sectionTitle}
                 </md-filled-button>
                 <md-outlined-button
@@ -59,5 +60,4 @@ const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
 <script>
     import "@material/web/button/filled-button.js";
     import "@material/web/button/outlined-button.js";
-    import "@material/web/icon/icon.js";
 </script>

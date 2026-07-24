@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import MaterialIcon from "@/components/MaterialIcon.astro";
 import { siteConfig, type LocaleContent } from "@/data/site";
 
 type Props = {
@@ -7,8 +8,13 @@ type Props = {
 };
 
 const { locale } = Astro.props;
-const mcpIcons = ["hub", "shield_lock", "visibility"];
-const appIcons = ["palette", "progress_activity", "system_update_alt", "desktop_windows"];
+const mcpIcons = ["hub", "shield_lock", "visibility"] as const;
+const appIcons = [
+    "palette",
+    "progress_activity",
+    "system_update_alt",
+    "desktop_windows",
+] as const;
 const mcpAdvantages = locale.advantages.slice(0, 3);
 const appAdvantages = locale.advantages.slice(3);
 const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
@@ -27,7 +33,7 @@ const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
             {mcpAdvantages.map((advantage, index) => (
                 <article class="feature-card">
                     <span class="feature-icon" aria-hidden="true">
-                        <md-icon>{mcpIcons[index]}</md-icon>
+                        <MaterialIcon name={mcpIcons[index]} />
                     </span>
                     <h3>{advantage.title}</h3>
                     <p>{advantage.body}</p>
@@ -36,7 +42,7 @@ const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
         </div>
         <div class="section-action">
             <md-filled-tonal-button href={mcpHref}>
-                <md-icon slot="icon">menu_book</md-icon>
+                <MaterialIcon name="menu_book" slot="icon" />
                 {locale.mcpDocsLabel}
             </md-filled-tonal-button>
         </div>
@@ -55,7 +61,7 @@ const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
             {appAdvantages.map((advantage, index) => (
                 <article class="feature-card compact-card">
                     <span class="feature-icon" aria-hidden="true">
-                        <md-icon>{appIcons[index]}</md-icon>
+                        <MaterialIcon name={appIcons[index]} />
                     </span>
                     <h3>{advantage.title}</h3>
                     <p>{advantage.body}</p>
@@ -67,5 +73,4 @@ const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
 
 <script>
     import "@material/web/button/filled-tonal-button.js";
-    import "@material/web/icon/icon.js";
 </script>

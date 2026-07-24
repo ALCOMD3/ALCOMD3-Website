@@ -1,4 +1,5 @@
 ---
+import MaterialIcon from "@/components/MaterialIcon.astro";
 import { siteConfig, type LocaleContent } from "@/data/site";
 
 type Props = {
@@ -43,7 +44,7 @@ const resources = [
                 >
                     <img src={resource.image} alt="" width="48" height="48" aria-hidden="true">
                     <strong>{resource.label}</strong>
-                    <md-icon aria-hidden="true">open_in_new</md-icon>
+                    <MaterialIcon name="open_in_new" />
                 </a>
             ))}
         </div>

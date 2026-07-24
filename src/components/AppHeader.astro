@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import BrandIcon from "@/components/BrandIcon.astro";
+import MaterialIcon from "@/components/MaterialIcon.astro";
 import { languageKeys, languageNames, locales, siteConfig, type LocaleContent } from "@/data/site";
 
 type Props = {
@@ -26,7 +27,7 @@ const themeOptions = [
         label: locale.appearanceDark,
         icon: "dark_mode",
     },
-];
+] as const;
 ---
 
 <header class="app-header">
@@ -45,7 +46,7 @@ const themeOptions = [
                     aria-controls="language-menu"
                     aria-expanded="false"
                 >
-                    <md-icon>translate</md-icon>
+                    <MaterialIcon name="translate" />
                 </md-filled-tonal-icon-button>
                 <md-menu
                     id="language-menu"
@@ -76,7 +77,7 @@ const themeOptions = [
                     aria-controls="theme-menu"
                     aria-expanded="false"
                 >
-                    <md-icon>contrast</md-icon>
+                    <MaterialIcon name="contrast" />
                 </md-filled-tonal-icon-button>
                 <md-menu
                     id="theme-menu"
@@ -88,7 +89,7 @@ const themeOptions = [
                 >
                     {themeOptions.map((option) => (
                         <md-menu-item data-theme-mode-value={option.value}>
-                            <md-icon slot="start">{option.icon}</md-icon>
+                            <MaterialIcon name={option.icon} slot="start" />
                             <div slot="headline">{option.label}</div>
                         </md-menu-item>
                     ))}
@@ -107,7 +108,6 @@ const themeOptions = [
 </header>
 
 <script>
-    import "@material/web/icon/icon.js";
     import "@material/web/iconbutton/filled-tonal-icon-button.js";
     import "@material/web/menu/menu.js";
     import "@material/web/menu/menu-item.js";

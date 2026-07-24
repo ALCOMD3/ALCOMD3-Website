@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import BrandIcon from "@/components/BrandIcon.astro";
+import MaterialIcon from "@/components/MaterialIcon.astro";
 import { siteConfig, type LocaleContent } from "@/data/site";
 
 type Props = {
@@ -47,7 +48,7 @@ const items = [
         target="_blank"
         rel="noopener noreferrer"
     >
-        <md-icon>code</md-icon>
+        <MaterialIcon name="code" />
         <span>
             <strong>{locale.positioningChips[4]}</strong>
             <small>{locale.positioningChips[0]}</small>
