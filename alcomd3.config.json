@@ -1,0 +1,64 @@
+{
+    "productName": "ALCOMD3",
+    "publisherName": "CQMHV",
+    "homepageUrl": "https://alcomd3.cqmhv.com/",
+    "repository": "ALCOMD3/ALCOMD3",
+    "websiteRepository": "ALCOMD3/ALCOMD3-Website",
+    "themeSeedColor": "#6cb6ff",
+    "externalLinks": {
+        "booth": "https://cqmhv.booth.pm/items/8408577",
+        "gumroad": "https://cqmhv.gumroad.com/l/alcomd3",
+        "vrcal": "https://vrcal.cqmhv.com/"
+    },
+    "releasePlatforms": {
+        "windows-x86_64": {
+            "target": "x86_64-pc-windows-msvc",
+            "updater": {
+                "assetPattern": "ALCOMD3_{version}_windows_x86_64_setup.exe"
+            },
+            "downloads": [
+                {
+                    "id": "windows-installer",
+                    "format": "zip",
+                    "assetPattern": "ALCOMD3_{version}_windows_x86_64_setup.exe.zip",
+                    "primary": true
+                }
+            ]
+        },
+        "darwin-aarch64": {
+            "target": "aarch64-apple-darwin",
+            "macosAdHocSigning": {},
+            "updater": {
+                "assetPattern": "ALCOMD3_{version}_macos_aarch64.app.tar.gz"
+            },
+            "downloads": [
+                {
+                    "id": "macos-apple-silicon",
+                    "format": "dmg",
+                    "assetPattern": "ALCOMD3_{version}_macos_aarch64.dmg",
+                    "primary": true
+                }
+            ]
+        },
+        "linux-x86_64": {
+            "target": "x86_64-unknown-linux-gnu",
+            "updater": {
+                "assetPattern": "ALCOMD3_{version}_linux_x86_64.AppImage.tar.gz"
+            },
+            "downloads": [
+                {
+                    "id": "linux-appimage",
+                    "format": "appimage",
+                    "assetPattern": "ALCOMD3_{version}_linux_x86_64.AppImage",
+                    "primary": true
+                },
+                {
+                    "id": "linux-deb",
+                    "format": "deb",
+                    "assetPattern": "ALCOMD3_{version}_linux_amd64.deb",
+                    "primary": false
+                }
+            ]
+        }
+    }
+}

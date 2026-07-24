@@ -1,0 +1,201 @@
+.download-page-section {
+    min-height: calc(100vh - 6.75rem);
+    padding-block: clamp(3rem, 7vw, 6rem);
+    background: var(--md-sys-color-surface-container-low);
+}
+
+.download-heading {
+    max-width: 52rem;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.download-heading h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 760;
+    letter-spacing: -0.055em;
+    line-height: 1.08;
+}
+
+.download-heading > p:last-child {
+    margin: 1.25rem 0 0;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 1.05rem;
+}
+
+.download-channel-list {
+    display: grid;
+    gap: 2rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.download-channel {
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    background: var(--md-sys-color-surface);
+}
+
+.download-channel-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 0.6fr) minmax(20rem, 1.4fr);
+    align-items: end;
+    gap: 2rem;
+}
+
+.download-channel-heading h2 {
+    margin: 0;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+.download-channel-heading > p {
+    margin: 0;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.download-version {
+    margin: 0.35rem 0 0;
+    color: var(--md-sys-color-primary);
+    font-weight: 700;
+}
+
+.download-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin: 1.5rem 0 0;
+    padding: 1rem;
+    border-radius: var(--md-sys-shape-corner-medium);
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+
+.download-platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.download-platform-card {
+    display: flex;
+    min-width: 0;
+    min-height: 19rem;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-large);
+    background: var(--md-sys-color-surface-container-low);
+}
+
+.download-platform-card[data-download-platform-match] {
+    outline: 0.1875rem solid var(--md-sys-color-primary);
+    outline-offset: 0.25rem;
+}
+
+.download-platform-title {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+}
+
+.download-platform-title .brand-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--md-sys-color-primary);
+}
+
+.download-platform-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.download-platform-title p {
+    margin: 0.4rem 0 0;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.88rem;
+}
+
+.download-actions {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+
+.button-link {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--md-sys-shape-corner-full);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button-link-filled {
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.button-link-tonal {
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+
+.button-link:hover {
+    box-shadow: 0 0 0 999rem color-mix(
+        in srgb,
+        var(--md-sys-color-on-surface) 8%,
+        transparent
+    ) inset;
+}
+
+.download-unavailable {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: auto 0 0;
+    padding-top: 1.5rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.release-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+    color: var(--md-sys-color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.release-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+@media (max-width: 60rem) {
+    .download-platform-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .download-platform-card {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 42rem) {
+    .download-channel-heading {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 1rem;
+    }
+}

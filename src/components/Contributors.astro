@@ -1,0 +1,138 @@
+---
+import { siteConfig, type LocaleContent } from "@/data/site";
+
+type Props = {
+    locale: LocaleContent;
+};
+
+const { locale } = Astro.props;
+---
+
+<section
+    class="content-section contributors-section"
+    data-contributors-section
+    data-contributors-api-url={siteConfig.contributorsApiUrl}
+    aria-labelledby="contributors-title"
+    hidden
+>
+    <div class="site-frame narrow-frame">
+        <div class="section-heading compact-heading centered-heading">
+            <div>
+                <p class="section-kicker">GitHub</p>
+                <h2 id="contributors-title">{locale.contributorsTitle}</h2>
+            </div>
+        </div>
+        <div class="contributor-list" data-contributors-list></div>
+    </div>
+</section>
+
+<script>
+    type Contributor = {
+        avatarUrl: string;
+        name: string;
+        profileUrl: string;
+    };
+
+    function isHttpsUrl(value: unknown): value is string {
+        if (typeof value !== "string") {
+            return false;
+        }
+
+        try {
+            return new URL(value).protocol === "https:";
+        } catch {
+            return false;
+        }
+    }
+
+    function normalizeContributor(value: unknown): Contributor | null {
+        if (
+            typeof value !== "object"
+            || value === null
+            || !("login" in value)
+            || !("avatar_url" in value)
+            || !("html_url" in value)
+            || typeof value.login !== "string"
+            || value.login.length === 0
+            || !isHttpsUrl(value.avatar_url)
+            || !isHttpsUrl(value.html_url)
+        ) {
+            return null;
+        }
+
+        return {
+            avatarUrl: value.avatar_url,
+            name: value.login,
+            profileUrl: value.html_url,
+        };
+    }
+
+    function createContributorLink(contributor: Contributor) {
+        const link = document.createElement("a");
+        const image = document.createElement("img");
+
+        link.className = "contributor-link";
+        link.href = contributor.profileUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.referrerPolicy = "no-referrer";
+        link.ariaLabel = contributor.name;
+        link.title = contributor.name;
+        link.dataset.contributorLink = "";
+
+        image.src = contributor.avatarUrl;
+        image.alt = "";
+        image.width = 56;
+        image.height = 56;
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.referrerPolicy = "no-referrer";
+        link.append(image);
+
+        return link;
+    }
+
+    async function fetchContributors(apiUrl: string) {
+        const response = await fetch(apiUrl, {
+            headers: {
+                Accept: "application/vnd.github+json",
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Contributor request failed: ${response.status}`);
+        }
+
+        const data = await response.json() as unknown;
+        if (!Array.isArray(data)) {
+            throw new Error("Contributor response is invalid");
+        }
+
+        return data
+            .map(normalizeContributor)
+            .filter((contributor): contributor is Contributor => contributor !== null);
+    }
+
+    document.querySelectorAll<HTMLElement>("[data-contributors-section]").forEach((section) => {
+        const apiUrl = section.dataset.contributorsApiUrl;
+        const list = section.querySelector<HTMLElement>("[data-contributors-list]");
+
+        if (!apiUrl || !list) {
+            return;
+        }
+
+        fetchContributors(apiUrl)
+            .then((contributors) => {
+                if (contributors.length === 0) {
+                    return;
+                }
+
+                list.replaceChildren(...contributors.map(createContributorLink));
+                section.hidden = false;
+                section.dataset.contributorsLive = "";
+            })
+            .catch(() => {
+                // The section intentionally remains hidden when GitHub is unavailable.
+            });
+    });
+</script>

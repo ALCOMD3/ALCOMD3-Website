@@ -1,0 +1,297 @@
+---
+import BrandIcon from "@/components/BrandIcon.astro";
+import {
+    siteConfig,
+    type DownloadChannel,
+    type DownloadPlatformKey,
+    type LocaleContent,
+} from "@/data/site";
+
+type Props = {
+    locale: LocaleContent;
+};
+
+type CatalogDownload = {
+    id: string;
+    format: string;
+    assetName: string;
+    primary: boolean;
+    url: string | null;
+};
+
+type CatalogPlatform = {
+    key: string;
+    operatingSystem: string;
+    available: boolean;
+    downloads: CatalogDownload[];
+};
+
+type DownloadCatalog = {
+    channel: DownloadChannel;
+    version: string;
+    releaseUrl: string;
+    platforms: CatalogPlatform[];
+    hasDownloads: boolean;
+    releasePageOnly: boolean;
+};
+
+const { locale } = Astro.props;
+const content = locale.downloads;
+const brandIconByOperatingSystem = {
+    Windows: "windows",
+    macOS: "apple",
+    Linux: "linux",
+} as const;
+
+function formatMessage(template: string, values: Record<string, string>) {
+    return Object.entries(values).reduce(
+        (message, [key, value]) => message.replaceAll(`{${key}}`, value),
+        template,
+    );
+}
+
+const catalogs = (siteConfig.downloadChannels as DownloadCatalog[]).map((catalog) => {
+    const channelContent = content.channels[catalog.channel];
+    const platforms = catalog.platforms.map((platform) => {
+        if (!(platform.key in content.platforms)) {
+            throw new Error(`Missing localized download content for ${platform.key}`);
+        }
+
+        const key = platform.key as DownloadPlatformKey;
+
+        return {
+            ...platform,
+            key,
+            content: content.platforms[key],
+        };
+    });
+
+    return {
+        ...catalog,
+        content: channelContent,
+        platforms,
+    };
+});
+---
+
+<section class="download-page-section" aria-labelledby="download-options-title">
+    <div class="site-frame">
+        <div class="download-heading">
+            <p class="section-kicker">ALCOMD3</p>
+            <h1 id="download-options-title">{content.sectionTitle}</h1>
+            <p>{content.sectionDescription}</p>
+        </div>
+
+        <div class="download-channel-list">
+            {catalogs.map((catalog) => {
+                const channelTitleId = `download-channel-${catalog.channel}-title`;
+                const channelVersion = formatMessage(content.channelVersion, {
+                    channel: catalog.content.name,
+                    version: catalog.version,
+                });
+                const releasePageLabel = formatMessage(content.releasePage, {
+                    channel: catalog.content.name,
+                    version: catalog.version,
+                });
+                const channelNotice = catalog.releasePageOnly
+                    ? content.stableReleaseOnly
+                    : !catalog.hasDownloads
+                        ? content.betaCanonicalUnavailable
+                        : null;
+
+                return (
+                    <section
+                        class="download-channel"
+                        aria-labelledby={channelTitleId}
+                        data-download-channel-section={catalog.channel}
+                        data-download-channel-version={catalog.version}
+                        data-download-channel-has-downloads={String(catalog.hasDownloads)}
+                    >
+                        <div class="download-channel-heading">
+                            <div>
+                                <h2 id={channelTitleId}>{catalog.content.name}</h2>
+                                <p class="download-version">{channelVersion}</p>
+                            </div>
+                            <p>{catalog.content.description}</p>
+                        </div>
+
+                        {channelNotice && (
+                            <p class="download-notice" data-download-channel-notice>
+                                <span class="material-symbols-rounded" aria-hidden="true">info</span>
+                                <span>{channelNotice}</span>
+                            </p>
+                        )}
+
+                        {catalog.platforms.length > 0 && (
+                            <div class="download-platform-grid">
+                                {catalog.platforms.map((platform) => {
+                                    const descriptionId =
+                                        `download-platform-${catalog.channel}-${platform.key}-description`;
+                                    const downloads = platform.downloads.filter(
+                                        (download) => download.url,
+                                    );
+                                    const brandIcon = brandIconByOperatingSystem[
+                                        platform.operatingSystem as keyof typeof brandIconByOperatingSystem
+                                    ];
+
+                                    return (
+                                        <article
+                                            class="download-platform-card"
+                                            data-download-channel={catalog.channel}
+                                            data-download-platform-card={platform.key}
+                                            data-download-platform-emphasis-candidate={
+                                                catalog.channel === siteConfig.stableRelease.channel
+                                                    ? ""
+                                                    : undefined
+                                            }
+                                        >
+                                            <div class="download-platform-title">
+                                                {brandIcon && <BrandIcon name={brandIcon} />}
+                                                <div>
+                                                    <h3>{platform.content.name}</h3>
+                                                    <p id={descriptionId}>{platform.content.description}</p>
+                                                </div>
+                                            </div>
+
+                                            {platform.available ? (
+                                                <div class="download-actions">
+                                                    {downloads.map((download) => {
+                                                        const format = content.formats[download.id]
+                                                            ?? download.format.toUpperCase();
+                                                        const actionLabel = formatMessage(
+                                                            content.downloadAction,
+                                                            {
+                                                                channel: catalog.content.name,
+                                                                version: catalog.version,
+                                                                platform: platform.content.name,
+                                                                format,
+                                                            },
+                                                        );
+
+                                                        return (
+                                                            <a
+                                                                class:list={[
+                                                                    "button-link",
+                                                                    download.primary
+                                                                        ? "button-link-filled"
+                                                                        : "button-link-tonal",
+                                                                ]}
+                                                                href={download.url ?? undefined}
+                                                                aria-label={actionLabel}
+                                                                aria-describedby={descriptionId}
+                                                                data-download-link
+                                                                data-download-channel={catalog.channel}
+                                                                data-download-platform={platform.key}
+                                                            >
+                                                                <span
+                                                                    class="material-symbols-rounded"
+                                                                    aria-hidden="true"
+                                                                >
+                                                                    download
+                                                                </span>
+                                                                <span>{format}</span>
+                                                            </a>
+                                                        );
+                                                    })}
+                                                </div>
+                                            ) : (
+                                                <p class="download-unavailable" data-download-unavailable>
+                                                    <span
+                                                        class="material-symbols-rounded"
+                                                        aria-hidden="true"
+                                                    >
+                                                        schedule
+                                                    </span>
+                                                    <span>{content.unavailable}</span>
+                                                </p>
+                                            )}
+                                        </article>
+                                    );
+                                })}
+                            </div>
+                        )}
+
+                        <a
+                            class="release-link"
+                            href={catalog.releaseUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-download-release-link={catalog.channel}
+                        >
+                            <span>{releasePageLabel}</span>
+                            <span class="material-symbols-rounded" aria-hidden="true">
+                                open_in_new
+                            </span>
+                        </a>
+                    </section>
+                );
+            })}
+        </div>
+    </div>
+</section>
+
+<script>
+    type NavigatorWithUserAgentData = Navigator & {
+        userAgentData?: {
+            platform?: string;
+        };
+    };
+
+    function detectDownloadPlatform(): string | null {
+        const browserNavigator = navigator as NavigatorWithUserAgentData;
+        const platform = (
+            browserNavigator.userAgentData?.platform
+            || navigator.platform
+            || ""
+        ).toLowerCase();
+        const userAgent = navigator.userAgent.toLowerCase();
+        const combinedValue = `${platform} ${userAgent}`;
+
+        if (
+            combinedValue.includes("android")
+            || combinedValue.includes("chrome os")
+            || combinedValue.includes("cros")
+            || combinedValue.includes("iphone")
+            || combinedValue.includes("ipad")
+            || combinedValue.includes("ipod")
+            || (platform.includes("macintel") && navigator.maxTouchPoints > 1)
+        ) {
+            return null;
+        }
+
+        if (
+            platform.includes("windows")
+            || platform.includes("win32")
+            || platform.includes("win64")
+            || (!platform && userAgent.includes("windows"))
+        ) {
+            return "windows-x86_64";
+        }
+        if (
+            platform.includes("macos")
+            || platform.includes("macintosh")
+            || platform.includes("macintel")
+            || (!platform && userAgent.includes("macintosh"))
+        ) {
+            return "darwin-aarch64";
+        }
+        if (
+            platform.includes("linux")
+            || platform.includes("x11")
+            || (!platform && (userAgent.includes("linux") || userAgent.includes("x11")))
+        ) {
+            return "linux-x86_64";
+        }
+
+        return null;
+    }
+
+    const platformKey = detectDownloadPlatform();
+    if (platformKey) {
+        document
+            .querySelector<HTMLElement>(
+                `[data-download-platform-emphasis-candidate][data-download-platform-card="${platformKey}"]`,
+            )
+            ?.setAttribute("data-download-platform-match", "");
+    }
+</script>

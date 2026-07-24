@@ -1,0 +1,20 @@
+---
+import type { LocaleContent } from "@/data/site";
+
+type Props = {
+    locale: LocaleContent;
+};
+
+const { locale } = Astro.props;
+---
+
+<section class="content-section positioning-section" aria-labelledby="positioning-title">
+    <div class="site-frame narrow-frame">
+        <p class="section-kicker">ALCOMD3</p>
+        <h2 id="positioning-title">{locale.productSubtitle}</h2>
+        <p class="section-lead">{locale.positioningBody}</p>
+        <div class="chip-list" aria-label={locale.productSubtitle}>
+            {locale.positioningChips.map((chip) => <span>{chip}</span>)}
+        </div>
+    </div>
+</section>

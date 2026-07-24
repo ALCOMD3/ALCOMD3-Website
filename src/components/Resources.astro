@@ -1,0 +1,51 @@
+---
+import { siteConfig, type LocaleContent } from "@/data/site";
+
+type Props = {
+    locale: LocaleContent;
+};
+
+const { locale } = Astro.props;
+const resources = [
+    {
+        label: locale.booth,
+        href: siteConfig.externalLinks.booth,
+        image: "/assets/booth-logo.png",
+    },
+    {
+        label: locale.gumroad,
+        href: siteConfig.externalLinks.gumroad,
+        image: "/assets/gumroad-logo.svg",
+    },
+    {
+        label: locale.vrcalLink,
+        href: siteConfig.externalLinks.vrcal,
+        image: "/assets/vrcal-logo-square.svg",
+    },
+];
+---
+
+<section class="content-section resources-section" aria-labelledby="resources-title">
+    <div class="site-frame">
+        <div class="section-heading compact-heading">
+            <div>
+                <p class="section-kicker">Links</p>
+                <h2 id="resources-title">{locale.resourcesTitle}</h2>
+            </div>
+        </div>
+        <div class="resource-grid">
+            {resources.map((resource) => (
+                <a
+                    class="resource-card"
+                    href={resource.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img src={resource.image} alt="" width="48" height="48" aria-hidden="true">
+                    <strong>{resource.label}</strong>
+                    <md-icon aria-hidden="true">open_in_new</md-icon>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>

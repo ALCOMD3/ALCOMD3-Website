@@ -1,0 +1,105 @@
+.docs-page {
+    min-height: calc(100vh - 6.75rem);
+    padding-block: clamp(2rem, 6vw, 5rem);
+    background: var(--md-sys-color-surface-container-low);
+}
+
+.docs-content {
+    width: min(100%, 72rem);
+    margin-inline: auto;
+    padding: clamp(1.5rem, 5vw, 4.5rem);
+    overflow: hidden;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    background: var(--md-sys-color-surface);
+}
+
+.docs-content h1,
+.docs-content h2,
+.docs-content h3 {
+    line-height: 1.25;
+    scroll-margin-top: 1.5rem;
+}
+
+.docs-content h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.045em;
+}
+
+.docs-content h2 {
+    margin: 3rem 0 1rem;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.docs-content h3 {
+    margin: 2rem 0 0.75rem;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+}
+
+.docs-content p,
+.docs-content li {
+    line-height: 1.75;
+}
+
+.docs-content a {
+    color: var(--md-sys-color-primary);
+    overflow-wrap: anywhere;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+}
+
+.docs-content code {
+    padding: 0.12em 0.35em;
+    border-radius: var(--md-sys-shape-corner-extra-small);
+    background: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface);
+    font-family: "Noto Sans Mono Variable", "Noto Sans Mono", ui-monospace, monospace;
+    font-size: 0.9em;
+}
+
+.docs-content pre {
+    width: 100%;
+    margin-block: 1.25rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+    border-radius: var(--md-sys-shape-corner-medium);
+    background: var(--md-sys-color-inverse-surface);
+    color: var(--md-sys-color-inverse-on-surface);
+}
+
+.docs-content pre code {
+    display: block;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+}
+
+.docs-content table {
+    display: block;
+    width: 100%;
+    margin-block: 1.25rem;
+    overflow-x: auto;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.docs-content th,
+.docs-content td {
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    text-align: start;
+    vertical-align: top;
+}
+
+.docs-content th {
+    background: var(--md-sys-color-surface-container-high);
+}
+
+.docs-content blockquote {
+    margin-inline: 0;
+    padding-inline-start: 1rem;
+    border-inline-start: 0.25rem solid var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-surface-variant);
+}

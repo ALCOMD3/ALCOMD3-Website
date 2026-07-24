@@ -1,0 +1,219 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BrandIcon from "@/components/BrandIcon.astro";
+import { languageKeys, languageNames, locales, siteConfig, type LocaleContent } from "@/data/site";
+
+type Props = {
+    locale: LocaleContent;
+    pagePath?: string;
+};
+
+const { locale, pagePath = "" } = Astro.props;
+const homeHref = getRelativeLocaleUrl(locale.lang, "");
+const themeOptions = [
+    {
+        value: "system",
+        label: locale.appearanceSystem,
+        icon: "contrast",
+    },
+    {
+        value: "light",
+        label: locale.appearanceLight,
+        icon: "light_mode",
+    },
+    {
+        value: "dark",
+        label: locale.appearanceDark,
+        icon: "dark_mode",
+    },
+];
+---
+
+<header class="app-header">
+    <nav class="site-frame header-content" aria-label="ALCOMD3">
+        <a class="brand-link" href={homeHref} aria-label="ALCOMD3">
+            <img src="/assets/logo.png" alt="" width="52" height="52" aria-hidden="true">
+            <span>ALCOMD3</span>
+        </a>
+
+        <div class="header-actions">
+            <div class="header-menu-anchor">
+                <md-filled-tonal-icon-button
+                    id="language-menu-anchor"
+                    aria-label={locale.languageLabel}
+                    aria-haspopup="menu"
+                    aria-controls="language-menu"
+                    aria-expanded="false"
+                >
+                    <md-icon>translate</md-icon>
+                </md-filled-tonal-icon-button>
+                <md-menu
+                    id="language-menu"
+                    anchor="language-menu-anchor"
+                    positioning="popover"
+                    menu-corner="start-end"
+                    anchor-corner="end-end"
+                    aria-label={locale.languageLabel}
+                >
+                    {languageKeys.map((language) => (
+                        <md-menu-item
+                            href={getRelativeLocaleUrl(language, pagePath)}
+                            data-language={language}
+                            data-ui-locale={locales[language].uiLocale}
+                            selected={language === locale.lang}
+                        >
+                            <div slot="headline">{languageNames[language]}</div>
+                        </md-menu-item>
+                    ))}
+                </md-menu>
+            </div>
+
+            <div class="header-menu-anchor">
+                <md-filled-tonal-icon-button
+                    id="theme-menu-anchor"
+                    aria-label={locale.appearanceLabel}
+                    aria-haspopup="menu"
+                    aria-controls="theme-menu"
+                    aria-expanded="false"
+                >
+                    <md-icon>contrast</md-icon>
+                </md-filled-tonal-icon-button>
+                <md-menu
+                    id="theme-menu"
+                    anchor="theme-menu-anchor"
+                    positioning="popover"
+                    menu-corner="start-end"
+                    anchor-corner="end-end"
+                    aria-label={locale.appearanceLabel}
+                >
+                    {themeOptions.map((option) => (
+                        <md-menu-item data-theme-mode-value={option.value}>
+                            <md-icon slot="start">{option.icon}</md-icon>
+                            <div slot="headline">{option.label}</div>
+                        </md-menu-item>
+                    ))}
+                </md-menu>
+            </div>
+
+            <md-filled-tonal-icon-button
+                href={siteConfig.repositoryUrl}
+                target="_blank"
+                aria-label={locale.githubLabel}
+            >
+                <BrandIcon name="github" />
+            </md-filled-tonal-icon-button>
+        </div>
+    </nav>
+</header>
+
+<script>
+    import "@material/web/icon/icon.js";
+    import "@material/web/iconbutton/filled-tonal-icon-button.js";
+    import "@material/web/menu/menu.js";
+    import "@material/web/menu/menu-item.js";
+    import { themeModeStorageKey, uiLocaleStorageKey } from "@/data/ui-preferences";
+
+    type MenuElement = HTMLElement & {
+        open: boolean;
+    };
+
+    type ThemeMode = "light" | "dark" | "system";
+
+    const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const languageAnchor = document.querySelector<HTMLElement>("#language-menu-anchor");
+    const languageMenu = document.querySelector<MenuElement>("#language-menu");
+    const themeAnchor = document.querySelector<HTMLElement>("#theme-menu-anchor");
+    const themeMenu = document.querySelector<MenuElement>("#theme-menu");
+    const themeOptions = document.querySelectorAll<HTMLElement>("[data-theme-mode-value]");
+
+    function getStoredValue(key: string) {
+        try {
+            return localStorage.getItem(key);
+        } catch {
+            return null;
+        }
+    }
+
+    function setStoredValue(key: string, value: string) {
+        try {
+            localStorage.setItem(key, value);
+        } catch {
+            // The visible interaction still works when storage is unavailable.
+        }
+    }
+
+    function normalizeThemeMode(value: string | null): ThemeMode {
+        return value === "light" || value === "dark" || value === "system"
+            ? value
+            : "system";
+    }
+
+    function applyThemeMode(preference: ThemeMode) {
+        const resolvedMode = preference === "system"
+            ? themeQuery.matches ? "dark" : "light"
+            : preference;
+        const root = document.documentElement;
+        const themeColor = getComputedStyle(root)
+            .getPropertyValue("--md-sys-color-primary")
+            .trim();
+
+        root.dataset.themeMode = resolvedMode;
+        root.style.colorScheme = resolvedMode;
+        requestAnimationFrame(() => {
+            const resolvedThemeColor = getComputedStyle(root)
+                .getPropertyValue("--md-sys-color-primary")
+                .trim();
+            document
+                .querySelector('meta[name="theme-color"]')
+                ?.setAttribute("content", resolvedThemeColor || themeColor);
+        });
+
+        themeOptions.forEach((option) => {
+            const selected = option.dataset.themeModeValue === preference;
+            option.toggleAttribute("selected", selected);
+            option.setAttribute("aria-selected", String(selected));
+        });
+    }
+
+    function wireMenu(anchor: HTMLElement | null, menu: MenuElement | null) {
+        if (!anchor || !menu) {
+            return;
+        }
+
+        anchor.addEventListener("click", () => {
+            menu.open = !menu.open;
+            anchor.setAttribute("aria-expanded", String(menu.open));
+        });
+        menu.addEventListener("closed", () => {
+            anchor.setAttribute("aria-expanded", "false");
+        });
+    }
+
+    wireMenu(languageAnchor, languageMenu);
+    wireMenu(themeAnchor, themeMenu);
+
+    document.querySelectorAll<HTMLElement>("[data-language]").forEach((option) => {
+        option.addEventListener("click", () => {
+            const locale = option.dataset.uiLocale;
+            if (locale) {
+                setStoredValue(uiLocaleStorageKey, locale);
+            }
+        });
+    });
+
+    themeOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+            const preference = normalizeThemeMode(option.dataset.themeModeValue ?? null);
+            setStoredValue(themeModeStorageKey, preference);
+            applyThemeMode(preference);
+        });
+    });
+
+    applyThemeMode(normalizeThemeMode(getStoredValue(themeModeStorageKey)));
+    themeQuery.addEventListener("change", () => {
+        const preference = normalizeThemeMode(getStoredValue(themeModeStorageKey));
+        if (preference === "system") {
+            applyThemeMode(preference);
+        }
+    });
+</script>

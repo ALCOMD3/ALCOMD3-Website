@@ -1,0 +1,63 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BrandIcon from "@/components/BrandIcon.astro";
+import PlatformSummary from "@/components/PlatformSummary.astro";
+import { siteConfig, type DownloadChannel, type LocaleContent } from "@/data/site";
+
+type Props = {
+    locale: LocaleContent;
+};
+
+const { locale } = Astro.props;
+const stableRelease = siteConfig.stableRelease;
+const stableChannel = locale.downloads.channels[stableRelease.channel as DownloadChannel];
+const releaseNote = locale.downloads.channelVersion
+    .replace("{channel}", stableChannel.name)
+    .replace("{version}", stableRelease.version);
+const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
+---
+
+<section class="hero-section" aria-labelledby="site-title">
+    <div class="site-frame hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">{locale.productSubtitle}</p>
+            <h1 id="site-title">{locale.positioningTitle}</h1>
+            <p class="hero-description">{locale.tagline}</p>
+            <div class="hero-actions">
+                <md-filled-button href={downloadHref}>
+                    <md-icon slot="icon">download</md-icon>
+                    {locale.downloads.sectionTitle}
+                </md-filled-button>
+                <md-outlined-button
+                    href={siteConfig.repositoryUrl}
+                    target="_blank"
+                    aria-label={locale.githubLabel}
+                >
+                    <BrandIcon name="github" slot="icon" />
+                    {locale.githubLabel}
+                </md-outlined-button>
+            </div>
+            <p class="release-note">{releaseNote}</p>
+        </div>
+
+        <div class="hero-media" aria-hidden="true">
+            <img
+                src="/assets/og-banner.png"
+                alt=""
+                width="2048"
+                height="2048"
+                fetchpriority="high"
+            >
+        </div>
+    </div>
+
+    <div class="site-frame">
+        <PlatformSummary locale={locale} />
+    </div>
+</section>
+
+<script>
+    import "@material/web/button/filled-button.js";
+    import "@material/web/button/outlined-button.js";
+    import "@material/web/icon/icon.js";
+</script>

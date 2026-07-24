@@ -1,0 +1,37 @@
+---
+import {
+    faApple,
+    faGithub,
+    faLinux,
+    faWindows,
+    type IconDefinition,
+} from "@fortawesome/free-brands-svg-icons";
+
+type IconName = "apple" | "github" | "linux" | "windows";
+
+type Props = {
+    name: IconName;
+    slot?: string;
+};
+
+const { name, slot } = Astro.props;
+const icons: Record<IconName, IconDefinition> = {
+    apple: faApple,
+    github: faGithub,
+    linux: faLinux,
+    windows: faWindows,
+};
+const icon = icons[name];
+const [width, height, , , pathData] = icon.icon;
+const paths = Array.isArray(pathData) ? pathData : [pathData];
+---
+
+<svg
+    class="brand-icon"
+    slot={slot}
+    viewBox={`0 0 ${width} ${height}`}
+    aria-hidden="true"
+    focusable="false"
+>
+    {paths.map((path) => <path d={path}></path>)}
+</svg>

@@ -1,0 +1,56 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BrandIcon from "@/components/BrandIcon.astro";
+import { siteConfig, type LocaleContent } from "@/data/site";
+
+type Props = {
+    locale: LocaleContent;
+};
+
+const { locale } = Astro.props;
+const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
+const items = [
+    {
+        key: "windows",
+        title: locale.downloads.platforms["windows-x86_64"].name,
+        description: locale.downloads.platforms["windows-x86_64"].description,
+        href: downloadHref,
+    },
+    {
+        key: "apple",
+        title: locale.downloads.platforms["darwin-aarch64"].name,
+        description: locale.downloads.platforms["darwin-aarch64"].description,
+        href: downloadHref,
+    },
+    {
+        key: "linux",
+        title: locale.downloads.platforms["linux-x86_64"].name,
+        description: locale.downloads.platforms["linux-x86_64"].description,
+        href: downloadHref,
+    },
+] as const;
+---
+
+<div class="platform-summary" aria-label={locale.downloads.sectionDescription}>
+    {items.map((item) => (
+        <a class="platform-summary-item" href={item.href}>
+            <BrandIcon name={item.key} />
+            <span>
+                <strong>{item.title}</strong>
+                <small>{item.description}</small>
+            </span>
+        </a>
+    ))}
+    <a
+        class="platform-summary-item"
+        href={siteConfig.repositoryUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <md-icon>code</md-icon>
+        <span>
+            <strong>{locale.positioningChips[4]}</strong>
+            <small>{locale.positioningChips[0]}</small>
+        </span>
+    </a>
+</div>

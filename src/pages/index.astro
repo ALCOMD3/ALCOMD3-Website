@@ -1,77 +1,122 @@
 ---
-import { siteConfig } from "../config";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import {
+    defaultUiLocale,
+    supportedUiLocales,
+    uiLocaleToRouteLocale,
+} from "@/data/i18n";
+import { themeModeStorageKey, uiLocaleStorageKey } from "@/data/ui-preferences";
+
+const defaultRoute = getRelativeLocaleUrl(uiLocaleToRouteLocale(defaultUiLocale), "");
+const routeByLocale = Object.fromEntries(
+    supportedUiLocales.map((locale) => [
+        locale,
+        getRelativeLocaleUrl(uiLocaleToRouteLocale(locale), ""),
+    ]),
+);
+const redirectConfig = {
+    defaultUiLocale,
+    supportedUiLocales,
+    routeByLocale,
+    themeModeStorageKey,
+    uiLocaleStorageKey,
+};
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en-US">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content={siteConfig.description} />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{siteConfig.title}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="color-scheme" content="light dark">
+        <title>ALCOMD3</title>
+        <script
+            is:inline
+            type="application/json"
+            id="language-redirect-config"
+            set:html={JSON.stringify(redirectConfig)}
+        />
+        <script is:inline>
+            (() => {
+                const configElement = document.getElementById("language-redirect-config");
+                if (!configElement?.textContent) {
+                    return;
+                }
+
+                const config = JSON.parse(configElement.textContent);
+                const supportedLocales = Array.isArray(config.supportedUiLocales)
+                    ? config.supportedUiLocales
+                    : [];
+
+                function normalizeExactLocale(locale) {
+                    if (!locale) {
+                        return null;
+                    }
+
+                    const normalized = String(locale).trim().replaceAll("_", "-").toLowerCase();
+                    return supportedLocales.find(
+                        (candidate) => candidate.toLowerCase() === normalized,
+                    ) || null;
+                }
+
+                function normalizeBrowserLocale(locale) {
+                    const exactLocale = normalizeExactLocale(locale);
+                    if (exactLocale || !locale) {
+                        return exactLocale;
+                    }
+
+                    const normalized = String(locale).trim().replaceAll("_", "-").toLowerCase();
+                    if (
+                        normalized.startsWith("zh-tw")
+                        || normalized.startsWith("zh-hk")
+                        || normalized.startsWith("zh-mo")
+                    ) {
+                        return normalizeExactLocale("zh-TW");
+                    }
+                    if (normalized.startsWith("zh")) {
+                        return normalizeExactLocale("zh-CN");
+                    }
+                    if (normalized.startsWith("ja")) {
+                        return normalizeExactLocale("ja-JP");
+                    }
+                    if (normalized.startsWith("en")) {
+                        return normalizeExactLocale("en-US");
+                    }
+
+                    return null;
+                }
+
+                function getStoredValue(key) {
+                    try {
+                        return localStorage.getItem(key);
+                    } catch {
+                        return null;
+                    }
+                }
+
+                const browserLocales = navigator.languages?.length
+                    ? navigator.languages
+                    : [navigator.language];
+                const storedLocale = normalizeExactLocale(
+                    getStoredValue(config.uiLocaleStorageKey),
+                );
+                const browserLocale = browserLocales.map(normalizeBrowserLocale).find(Boolean);
+                const locale = storedLocale
+                    || browserLocale
+                    || normalizeExactLocale(config.defaultUiLocale)
+                    || config.defaultUiLocale;
+                const targetRoute = config.routeByLocale?.[locale]
+                    || config.routeByLocale?.[config.defaultUiLocale];
+
+                if (targetRoute && window.location.pathname !== targetRoute) {
+                    window.location.replace(targetRoute);
+                }
+            })();
+        </script>
+        <noscript>
+            <meta http-equiv="refresh" content={`0; url=${defaultRoute}`}>
+        </noscript>
     </head>
-    <body>
-        <main>
-            <p class="eyebrow">官方网站</p>
-            <h1>{siteConfig.name}</h1>
-            <p class="status">网站正在建设中。</p>
-        </main>
-    </body>
+    <body></body>
 </html>
-
-<style>
-    :global(*) {
-        box-sizing: border-box;
-    }
-
-    :global(html) {
-        background: #f0eee8;
-        color: #171713;
-        font-family: "Noto Serif SC", "Songti SC", serif;
-    }
-
-    :global(body) {
-        min-width: 320px;
-        min-height: 100vh;
-        margin: 0;
-    }
-
-    main {
-        display: grid;
-        min-height: 100vh;
-        align-content: center;
-        padding: clamp(2rem, 8vw, 8rem);
-        background:
-            linear-gradient(90deg, rgb(23 23 19 / 8%) 1px, transparent 1px),
-            linear-gradient(rgb(23 23 19 / 8%) 1px, transparent 1px);
-        background-size: 3rem 3rem;
-    }
-
-    .eyebrow {
-        margin: 0 0 1rem;
-        color: #b33a24;
-        font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.3em;
-    }
-
-    h1 {
-        margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: clamp(4rem, 16vw, 12rem);
-        font-weight: 400;
-        letter-spacing: -0.07em;
-        line-height: 0.85;
-    }
-
-    .status {
-        width: fit-content;
-        margin: 2.5rem 0 0;
-        padding-top: 0.75rem;
-        border-top: 2px solid #171713;
-        font-size: clamp(1rem, 2vw, 1.25rem);
-    }
-</style>
-

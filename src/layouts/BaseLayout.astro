@@ -1,0 +1,171 @@
+---
+import "@fontsource-variable/material-symbols-rounded/wght.css";
+import "@fontsource-variable/noto-sans/wght.css";
+import "@fontsource-variable/noto-sans-jp/wght.css";
+import "@fontsource-variable/noto-sans-mono/wght.css";
+import "@fontsource-variable/noto-sans-sc/wght.css";
+import "@fontsource-variable/noto-sans-tc/wght.css";
+import "@/generated/theme.css";
+import "@/styles/global.css";
+import { getAlternateLocaleLinks, getCanonicalUrl } from "@/data/seo";
+import { siteConfig, type LocaleContent } from "@/data/site";
+import { themeModeStorageKey } from "@/data/ui-preferences";
+
+type Props = {
+    locale: LocaleContent;
+    pagePath?: string;
+    title?: string;
+    description?: string;
+    twitterDescription?: string;
+    ogImageAlt?: string;
+    structuredData?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const {
+    locale,
+    description = locale.description,
+    ogImageAlt = locale.ogImageAlt,
+    pagePath = "",
+    structuredData: additionalStructuredData,
+    title = locale.title,
+    twitterDescription = locale.twitterDescription,
+} = Astro.props;
+
+const canonicalUrl = getCanonicalUrl(locale.lang, pagePath);
+const alternateLocaleLinks = getAlternateLocaleLinks(pagePath);
+const siteUrl = Astro.site ?? new URL(canonicalUrl);
+const ogImageUrl = new URL(siteConfig.ogImagePath, siteUrl).href;
+const logoUrl = new URL(siteConfig.logoPath, siteUrl).href;
+const stableRelease = siteConfig.stableRelease;
+const softwareApplicationUrl = getCanonicalUrl(locale.lang);
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: siteConfig.name,
+    applicationCategory: "DeveloperApplication",
+    applicationSubCategory: locale.productSubtitle,
+    url: softwareApplicationUrl,
+    image: ogImageUrl,
+    logo: logoUrl,
+    codeRepository: siteConfig.repositoryUrl,
+    keywords: locale.seoKeywords,
+    featureList: locale.softwareFeatures,
+    isAccessibleForFree: true,
+    inLanguage: locale.htmlLang,
+    description: locale.structuredDescription,
+    offers: {
+        "@type": "Offer",
+        price: 0,
+    },
+    softwareVersion: stableRelease.version,
+    ...(stableRelease.operatingSystems.length > 0
+        ? { operatingSystem: stableRelease.operatingSystems }
+        : {}),
+    ...(stableRelease.downloadUrls.length > 0
+        ? { downloadUrl: stableRelease.downloadUrls }
+        : {}),
+    author: {
+        "@type": "Organization",
+        name: siteConfig.authorName,
+        url: siteConfig.authorUrl,
+    },
+    publisher: {
+        "@type": "Organization",
+        name: siteConfig.authorName,
+        url: siteConfig.authorUrl,
+    },
+};
+const structuredDataItems = [
+    structuredData,
+    ...(Array.isArray(additionalStructuredData)
+        ? additionalStructuredData
+        : additionalStructuredData
+            ? [additionalStructuredData]
+            : []),
+];
+const themeBootstrapConfig = {
+    storageKey: themeModeStorageKey,
+    colors: {
+        light: siteConfig.themeColorLight,
+        dark: siteConfig.themeColorDark,
+    },
+};
+---
+
+<!doctype html>
+<html lang={locale.htmlLang}>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content={description}>
+        <meta name="robots" content="index, follow">
+        <meta name="author" content={siteConfig.authorName}>
+        <meta name="application-name" content={siteConfig.name}>
+        <meta name="theme-color" content={siteConfig.themeColorLight} id="theme-color">
+        <meta name="color-scheme" content="light dark">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="canonical" href={canonicalUrl}>
+        <link rel="sitemap" href="/sitemap-index.xml">
+        {alternateLocaleLinks.map((link) => (
+            <link rel="alternate" hreflang={link.hreflang} href={link.href}>
+        ))}
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content={siteConfig.name}>
+        <meta property="og:title" content={title}>
+        <meta property="og:description" content={description}>
+        <meta property="og:url" content={canonicalUrl}>
+        <meta property="og:image" content={ogImageUrl}>
+        <meta property="og:image:alt" content={ogImageAlt}>
+        <meta property="og:image:width" content={String(siteConfig.ogImageWidth)}>
+        <meta property="og:image:height" content={String(siteConfig.ogImageHeight)}>
+        <meta property="og:image:type" content={siteConfig.ogImageType}>
+        <meta property="og:locale" content={locale.ogLocale}>
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content={title}>
+        <meta name="twitter:description" content={twitterDescription}>
+        <meta name="twitter:image" content={ogImageUrl}>
+        <meta name="twitter:image:alt" content={ogImageAlt}>
+        <title>{title}</title>
+        <link rel="icon" href="/assets/favicon.ico" sizes="any">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
+        <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
+        <link rel="apple-touch-icon" href="/assets/icon-128.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <script
+            is:inline
+            type="application/json"
+            id="theme-bootstrap-config"
+            set:html={JSON.stringify(themeBootstrapConfig)}
+        />
+        <script is:inline>
+            (() => {
+                const configElement = document.getElementById("theme-bootstrap-config");
+                const config = configElement?.textContent ? JSON.parse(configElement.textContent) : {};
+                const systemMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "dark"
+                    : "light";
+                let preference = "system";
+
+                try {
+                    const storedPreference = localStorage.getItem(config.storageKey);
+                    if (["light", "dark", "system"].includes(storedPreference)) {
+                        preference = storedPreference;
+                    }
+                } catch {
+                    preference = "system";
+                }
+
+                const resolvedMode = preference === "system" ? systemMode : preference;
+                document.documentElement.dataset.themeMode = resolvedMode;
+                document.documentElement.style.colorScheme = resolvedMode;
+                document
+                    .querySelector('meta[name="theme-color"]')
+                    ?.setAttribute("content", config.colors?.[resolvedMode] ?? "");
+            })();
+        </script>
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredDataItems)} />
+    </head>
+    <body>
+        <slot />
+    </body>
+</html>
