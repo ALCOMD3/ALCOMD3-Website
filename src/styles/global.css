@@ -130,10 +130,93 @@ md-menu:not(:defined) {
 md-filled-button:not(:defined),
 md-filled-tonal-button:not(:defined),
 md-outlined-button:not(:defined) {
+    --site-button-container-height: 2.5rem;
+    --site-button-icon-size: 1.125rem;
+    --site-button-label-line-height: 1.25rem;
+    --site-button-label-size: 0.875rem;
+
+    box-sizing: border-box;
     display: inline-flex;
+    min-width: 4rem;
+    min-height: var(--site-button-container-height);
     align-items: center;
     justify-content: center;
-    visibility: hidden;
+    gap: 0.5rem;
+    border: 0;
+    border-radius: var(--md-sys-shape-corner-full);
+    cursor: pointer;
+    padding: calc(
+        (
+            var(--site-button-container-height)
+            - max(var(--site-button-label-line-height), var(--site-button-icon-size))
+        ) / 2
+    ) 1.5rem;
+    font-size: var(--site-button-label-size);
+    font-weight: 500;
+    line-height: var(--site-button-label-line-height);
+    text-decoration: none;
+    text-wrap: nowrap;
+    user-select: none;
+    vertical-align: top;
+}
+
+md-filled-button:not(:defined) {
+    --site-button-container-height: var(--md-filled-button-container-height, 2.5rem);
+    --site-button-icon-size: var(--md-filled-button-icon-size, 1.125rem);
+    --site-button-label-line-height: var(--md-filled-button-label-text-line-height, 1.25rem);
+    --site-button-label-size: var(--md-filled-button-label-text-size, 0.875rem);
+
+    background: var(--md-filled-button-container-color, var(--md-sys-color-primary));
+    color: var(--md-filled-button-label-text-color, var(--md-sys-color-on-primary));
+}
+
+md-filled-tonal-button:not(:defined) {
+    --site-button-container-height: var(--md-filled-tonal-button-container-height, 2.5rem);
+    --site-button-icon-size: var(--md-filled-tonal-button-icon-size, 1.125rem);
+    --site-button-label-line-height: var(
+        --md-filled-tonal-button-label-text-line-height,
+        1.25rem
+    );
+    --site-button-label-size: var(--md-filled-tonal-button-label-text-size, 0.875rem);
+
+    background: var(
+        --md-filled-tonal-button-container-color,
+        var(--md-sys-color-secondary-container)
+    );
+    color: var(
+        --md-filled-tonal-button-label-text-color,
+        var(--md-sys-color-on-secondary-container)
+    );
+}
+
+md-outlined-button:not(:defined) {
+    --site-button-container-height: var(--md-outlined-button-container-height, 2.5rem);
+    --site-button-icon-size: var(--md-outlined-button-icon-size, 1.125rem);
+    --site-button-label-line-height: var(
+        --md-outlined-button-label-text-line-height,
+        1.25rem
+    );
+    --site-button-label-size: var(--md-outlined-button-label-text-size, 0.875rem);
+
+    background: transparent;
+    box-shadow: inset 0 0 0 var(--md-outlined-button-outline-width, 0.0625rem)
+        var(--md-outlined-button-outline-color, var(--md-sys-color-outline));
+    color: var(--md-outlined-button-label-text-color, var(--md-sys-color-primary));
+}
+
+md-filled-button:not(:defined):has(> [slot="icon"]),
+md-filled-tonal-button:not(:defined):has(> [slot="icon"]),
+md-outlined-button:not(:defined):has(> [slot="icon"]) {
+    padding-inline: 1rem 1.5rem;
+}
+
+md-filled-button:not(:defined) > [slot="icon"],
+md-filled-tonal-button:not(:defined) > [slot="icon"],
+md-outlined-button:not(:defined) > [slot="icon"] {
+    width: var(--site-button-icon-size);
+    height: var(--site-button-icon-size);
+    flex: none;
+    font-size: var(--site-button-icon-size);
 }
 
 .app-header {
@@ -186,13 +269,20 @@ md-outlined-button:not(:defined) {
 }
 
 .header-actions md-filled-tonal-icon-button:not(:defined) {
+    box-sizing: border-box;
     display: inline-flex;
     width: var(--md-filled-tonal-icon-button-container-width);
     height: var(--md-filled-tonal-icon-button-container-height);
     flex: none;
     align-items: center;
     justify-content: center;
-    visibility: hidden;
+    overflow: hidden;
+    border: 0;
+    border-radius: var(--md-sys-shape-corner-full);
+    background: var(--md-filled-tonal-icon-button-container-color);
+    color: var(--md-filled-tonal-icon-button-icon-color);
+    cursor: pointer;
+    vertical-align: top;
 }
 
 .header-actions md-icon {

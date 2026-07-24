@@ -126,6 +126,26 @@ test("contributors stay hidden when the GitHub request fails", async ({ page }) 
 test.describe("without JavaScript", () => {
     test.use({ javaScriptEnabled: false });
 
+    test("critical Material actions keep their initial fallback visible", async ({ page }) => {
+        const response = await page.goto("/en-us/");
+        expect(response?.ok()).toBe(true);
+
+        const selectors = [
+            "#language-menu-anchor",
+            "#theme-menu-anchor",
+            ".header-actions md-filled-tonal-icon-button[href]",
+            ".hero-actions md-filled-button",
+            ".hero-actions md-outlined-button",
+            ".section-action md-filled-tonal-button",
+        ];
+
+        for (const selector of selectors) {
+            const action = page.locator(selector);
+            await expect(action).toBeVisible();
+            expect(await action.evaluate((element) => element.matches(":defined"))).toBe(false);
+        }
+    });
+
     test("download links remain ordinary usable links", async ({ page }) => {
         const response = await page.goto("/en-us/download/");
         expect(response?.ok()).toBe(true);
