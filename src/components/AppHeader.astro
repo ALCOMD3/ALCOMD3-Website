@@ -38,6 +38,23 @@ const themeOptions = [
         </a>
 
         <div class="header-actions">
+            <a
+                class="header-partner-link"
+                href={siteConfig.externalLinks.vrcal}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={locale.vrcalLink}
+            >
+                <img
+                    src="/assets/vrcal-logo-square.svg"
+                    alt=""
+                    width="36"
+                    height="36"
+                    aria-hidden="true"
+                >
+                <span>{locale.vrcalLink}</span>
+            </a>
+
             <div class="header-menu-anchor">
                 <md-filled-tonal-icon-button
                     id="language-menu-anchor"
