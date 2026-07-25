@@ -72,7 +72,6 @@
 }
 
 .download-notice md-icon,
-.download-actions md-icon,
 .download-unavailable md-icon,
 .release-link md-icon {
     font-size: 1.5rem;
@@ -136,8 +135,10 @@
 .download-actions md-filled-tonal-button {
     width: 100%;
     --md-filled-button-container-height: 3.25rem;
+    --md-filled-button-icon-size: 1.5rem;
     --md-filled-button-label-text-size: 0.95rem;
     --md-filled-tonal-button-container-height: 3.25rem;
+    --md-filled-tonal-button-icon-size: 1.5rem;
     --md-filled-tonal-button-label-text-size: 0.95rem;
 }
 

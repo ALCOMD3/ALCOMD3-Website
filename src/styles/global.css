@@ -668,6 +668,7 @@ md-menu-item {
 
 .hero-actions {
     --site-hero-action-container-height: 3.5rem;
+    --site-hero-download-icon-size: 1.5rem;
 
     display: flex;
     flex-wrap: wrap;
@@ -686,6 +687,10 @@ md-menu-item {
         --site-hero-action-container-height
     );
     --md-outlined-button-label-text-size: 1rem;
+}
+
+.hero-actions md-filled-button {
+    --md-filled-button-icon-size: var(--site-hero-download-icon-size);
 }
 
 .hero-actions .brand-icon {
