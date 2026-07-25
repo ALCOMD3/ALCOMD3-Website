@@ -41,7 +41,11 @@ const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
             ))}
         </div>
         <div class="section-action">
-            <md-filled-tonal-button href={mcpHref}>
+            <md-filled-tonal-button
+                href={mcpHref}
+                aria-label={locale.mcpDocsLabel}
+                has-icon
+            >
                 <MaterialIcon name="menu_book" slot="icon" />
                 {locale.mcpDocsLabel}
             </md-filled-tonal-button>

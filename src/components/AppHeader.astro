@@ -38,11 +38,27 @@ const themeOptions = [
         </a>
 
         <div class="header-actions">
-            <a
-                class="header-partner-link"
+            <md-filled-tonal-button
+                class="header-partner-button"
                 href={siteConfig.externalLinks.vrcal}
                 target="_blank"
-                rel="noopener noreferrer"
+                aria-label={locale.vrcalLink}
+                has-icon
+            >
+                <img
+                    slot="icon"
+                    src="/assets/vrcal-logo-square.svg"
+                    alt=""
+                    width="36"
+                    height="36"
+                    aria-hidden="true"
+                >
+                {locale.vrcalLink}
+            </md-filled-tonal-button>
+            <md-filled-tonal-icon-button
+                class="header-partner-icon-button"
+                href={siteConfig.externalLinks.vrcal}
+                target="_blank"
                 aria-label={locale.vrcalLink}
             >
                 <img
@@ -52,8 +68,7 @@ const themeOptions = [
                     height="36"
                     aria-hidden="true"
                 >
-                <span>{locale.vrcalLink}</span>
-            </a>
+            </md-filled-tonal-icon-button>
 
             <div class="header-menu-anchor">
                 <md-filled-tonal-icon-button
@@ -125,6 +140,7 @@ const themeOptions = [
 </header>
 
 <script>
+    import "@material/web/button/filled-tonal-button.js";
     import "@material/web/iconbutton/filled-tonal-icon-button.js";
     import "@material/web/menu/menu.js";
     import "@material/web/menu/menu-item.js";

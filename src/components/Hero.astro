@@ -37,7 +37,11 @@ const marketplaces = [
             <h1 id="site-title">{locale.positioningTitle}</h1>
             <p class="hero-description">{locale.tagline}</p>
             <div class="hero-actions">
-                <md-filled-button href={downloadHref}>
+                <md-filled-button
+                    href={downloadHref}
+                    aria-label={locale.downloads.sectionTitle}
+                    has-icon
+                >
                     <MaterialIcon name="download" slot="icon" />
                     {locale.downloads.sectionTitle}
                 </md-filled-button>
@@ -45,6 +49,7 @@ const marketplaces = [
                     href={siteConfig.repositoryUrl}
                     target="_blank"
                     aria-label={locale.githubLabel}
+                    has-icon
                 >
                     <BrandIcon name="github" slot="icon" />
                     {locale.githubLabel}
@@ -57,22 +62,22 @@ const marketplaces = [
                 aria-label={locale.resourcesTitle}
             >
                 {marketplaces.map((marketplace) => (
-                    <a
-                        class="marketplace-link"
+                    <md-filled-tonal-button
                         href={marketplace.href}
                         target="_blank"
-                        rel="noopener noreferrer"
+                        aria-label={marketplace.label}
+                        has-icon
                     >
                         <img
+                            slot="icon"
                             src={marketplace.image}
                             alt=""
-                            width="24"
-                            height="24"
+                            width="18"
+                            height="18"
                             aria-hidden="true"
                         >
-                        <span>{marketplace.label}</span>
-                        <MaterialIcon name="open_in_new" />
-                    </a>
+                        {marketplace.label}
+                    </md-filled-tonal-button>
                 ))}
             </div>
         </div>
@@ -95,5 +100,6 @@ const marketplaces = [
 
 <script>
     import "@material/web/button/filled-button.js";
+    import "@material/web/button/filled-tonal-button.js";
     import "@material/web/button/outlined-button.js";
 </script>

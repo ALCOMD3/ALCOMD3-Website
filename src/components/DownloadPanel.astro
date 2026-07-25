@@ -169,24 +169,37 @@ const catalogs = (siteConfig.downloadChannels as DownloadCatalog[]).map((catalog
                                                             },
                                                         );
 
-                                                        return (
-                                                            <a
-                                                                class:list={[
-                                                                    "button-link",
-                                                                    download.primary
-                                                                        ? "button-link-filled"
-                                                                        : "button-link-tonal",
-                                                                ]}
-                                                                href={download.url ?? undefined}
-                                                                aria-label={actionLabel}
-                                                                aria-describedby={descriptionId}
-                                                                data-download-link
-                                                                data-download-channel={catalog.channel}
-                                                                data-download-platform={platform.key}
+                                                        const buttonProps = {
+                                                            href: download.url ?? undefined,
+                                                            "aria-label": actionLabel,
+                                                            "aria-describedby": descriptionId,
+                                                            "data-download-link": "",
+                                                            "data-download-channel": catalog.channel,
+                                                            "data-download-platform": platform.key,
+                                                        };
+
+                                                        return download.primary ? (
+                                                            <md-filled-button
+                                                                has-icon
+                                                                {...buttonProps}
                                                             >
-                                                                <MaterialIcon name="download" />
-                                                                <span>{format}</span>
-                                                            </a>
+                                                                <MaterialIcon
+                                                                    name="download"
+                                                                    slot="icon"
+                                                                />
+                                                                {format}
+                                                            </md-filled-button>
+                                                        ) : (
+                                                            <md-filled-tonal-button
+                                                                has-icon
+                                                                {...buttonProps}
+                                                            >
+                                                                <MaterialIcon
+                                                                    name="download"
+                                                                    slot="icon"
+                                                                />
+                                                                {format}
+                                                            </md-filled-tonal-button>
                                                         );
                                                     })}
                                                 </div>
@@ -220,6 +233,9 @@ const catalogs = (siteConfig.downloadChannels as DownloadCatalog[]).map((catalog
 </section>
 
 <script>
+    import "@material/web/button/filled-button.js";
+    import "@material/web/button/filled-tonal-button.js";
+
     type NavigatorWithUserAgentData = Navigator & {
         userAgentData?: {
             platform?: string;
