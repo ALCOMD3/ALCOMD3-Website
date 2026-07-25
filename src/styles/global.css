@@ -1,3 +1,9 @@
+@property --site-expressive-button-shape {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+}
+
 :root {
     --md-ref-typeface-brand: "Noto Sans Variable", "Noto Sans SC Variable",
         "Noto Sans TC Variable", "Noto Sans JP Variable", system-ui, sans-serif;
@@ -397,6 +403,16 @@ md-menu-item {
 }
 
 .hero-actions {
+    --site-expressive-button-container-height: 3.5rem;
+    --site-expressive-button-resting-shape: calc(
+        var(--site-expressive-button-container-height) / 2
+    );
+    --site-expressive-button-pressed-shape: var(
+        --md-sys-shape-corner-extra-small
+    );
+    --site-expressive-button-shape-duration: 200ms;
+    --site-expressive-button-shape-easing: ease;
+
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -405,16 +421,36 @@ md-menu-item {
 
 .hero-actions md-filled-button,
 .hero-actions md-outlined-button {
+    --site-expressive-button-shape: var(
+        --site-expressive-button-resting-shape
+    );
+    --md-filled-button-container-shape: var(--site-expressive-button-shape);
+    --md-outlined-button-container-shape: var(--site-expressive-button-shape);
     min-width: 13.5rem;
-    --md-filled-button-container-height: 3.5rem;
+    border-radius: var(--site-expressive-button-shape);
+    transition: --site-expressive-button-shape
+        var(--site-expressive-button-shape-duration)
+        var(--site-expressive-button-shape-easing);
+    --md-filled-button-container-height: var(
+        --site-expressive-button-container-height
+    );
     --md-filled-button-label-text-size: 1rem;
-    --md-outlined-button-container-height: 3.5rem;
+    --md-outlined-button-container-height: var(
+        --site-expressive-button-container-height
+    );
     --md-outlined-button-label-text-size: 1rem;
+}
+
+.hero-actions md-filled-button:active,
+.hero-actions md-outlined-button:active {
+    --site-expressive-button-shape: var(
+        --site-expressive-button-pressed-shape
+    );
 }
 
 .hero-actions md-filled-button:not(:defined),
 .hero-actions md-outlined-button:not(:defined) {
-    min-height: 3.5rem;
+    min-height: var(--site-expressive-button-container-height);
 }
 
 .hero-actions .brand-icon {
