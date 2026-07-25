@@ -16,6 +16,18 @@ const releaseNote = locale.downloads.channelVersion
     .replace("{channel}", stableChannel.name)
     .replace("{version}", stableRelease.version);
 const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
+const marketplaces = [
+    {
+        label: locale.booth,
+        href: siteConfig.externalLinks.booth,
+        image: "/assets/booth-logo.png",
+    },
+    {
+        label: locale.gumroad,
+        href: siteConfig.externalLinks.gumroad,
+        image: "/assets/gumroad-logo.svg",
+    },
+];
 ---
 
 <section class="hero-section" aria-labelledby="site-title">
@@ -39,6 +51,30 @@ const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
                 </md-outlined-button>
             </div>
             <p class="release-note">{releaseNote}</p>
+            <div
+                class="marketplace-actions"
+                role="group"
+                aria-label={locale.resourcesTitle}
+            >
+                {marketplaces.map((marketplace) => (
+                    <a
+                        class="marketplace-link"
+                        href={marketplace.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src={marketplace.image}
+                            alt=""
+                            width="24"
+                            height="24"
+                            aria-hidden="true"
+                        >
+                        <span>{marketplace.label}</span>
+                        <MaterialIcon name="open_in_new" />
+                    </a>
+                ))}
+            </div>
         </div>
 
         <div class="hero-media" aria-hidden="true">

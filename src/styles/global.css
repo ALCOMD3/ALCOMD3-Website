@@ -428,6 +428,51 @@ md-menu-item {
     font-size: 0.9rem;
 }
 
+.marketplace-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.marketplace-link {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.6rem;
+    padding-inline: 1rem;
+    border-radius: var(--md-sys-shape-corner-full);
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    font-size: 0.9rem;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.marketplace-link:hover {
+    background: color-mix(
+        in srgb,
+        var(--md-sys-color-secondary-container),
+        var(--md-sys-color-on-secondary-container) 8%
+    );
+}
+
+.marketplace-link:focus-visible {
+    outline: 3px solid var(--md-sys-color-secondary);
+    outline-offset: 2px;
+}
+
+.marketplace-link img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+    border-radius: var(--md-sys-shape-corner-extra-small);
+}
+
+.marketplace-link md-icon {
+    font-size: 1.1rem;
+}
+
 .hero-media {
     position: relative;
     aspect-ratio: 1.65;
@@ -645,48 +690,7 @@ md-menu-item {
     min-height: 3.25rem;
 }
 
-.resources-section {
-    background: var(--md-sys-color-surface);
-}
-
-.resource-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
-    gap: 1rem;
-}
-
-.resource-card {
-    display: grid;
-    grid-template-columns: 3rem minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 1rem;
-    min-width: 0;
-    padding: 1.25rem;
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: var(--md-sys-shape-corner-large);
-    background: var(--md-sys-color-surface-container-low);
-    color: var(--md-sys-color-on-surface);
-    text-decoration: none;
-}
-
-.resource-card:hover {
-    background: var(--md-sys-color-surface-container);
-}
-
-.resource-card img {
-    width: 3rem;
-    height: 3rem;
-    object-fit: contain;
-    border-radius: var(--md-sys-shape-corner-small);
-}
-
-.resource-card md-icon {
-    color: var(--md-sys-color-primary);
-    font-size: 1.5rem;
-}
-
 .contributors-section {
-    padding-top: 0;
     background: var(--md-sys-color-surface);
 }
 
@@ -775,8 +779,7 @@ md-menu-item {
         gap: 1.25rem;
     }
 
-    .feature-grid-three,
-    .resource-grid {
+    .feature-grid-three {
         grid-template-columns: 1fr;
     }
 }

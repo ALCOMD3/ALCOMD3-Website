@@ -4,7 +4,6 @@ import AppHeader from "@/components/AppHeader.astro";
 import Contributors from "@/components/Contributors.astro";
 import Hero from "@/components/Hero.astro";
 import Positioning from "@/components/Positioning.astro";
-import Resources from "@/components/Resources.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { languageKeys, locales, type LanguageKey } from "@/data/site";
 
@@ -29,7 +28,6 @@ const locale = locales[lang];
         <Hero locale={locale} />
         <Positioning locale={locale} />
         <Advantages locale={locale} />
-        <Resources locale={locale} />
         <Contributors locale={locale} />
     </main>
 </BaseLayout>
