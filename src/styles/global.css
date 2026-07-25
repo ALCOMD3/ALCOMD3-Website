@@ -4,6 +4,12 @@
     initial-value: 0px;
 }
 
+@property --site-icon-button-shape {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+}
+
 :root {
     --md-ref-typeface-brand: "Noto Sans Variable", "Noto Sans SC Variable",
         "Noto Sans TC Variable", "Noto Sans JP Variable", system-ui, sans-serif;
@@ -19,6 +25,9 @@
     --md-sys-shape-corner-large: 1.5rem;
     --md-sys-shape-corner-extra-large: 2rem;
     --md-sys-shape-corner-full: 999rem;
+    --site-expressive-pressed-shape: var(--md-sys-shape-corner-extra-small);
+    --site-expressive-shape-duration: 200ms;
+    --site-expressive-shape-easing: ease;
     --site-frame-width: 90rem;
     --site-narrow-width: 68rem;
     --site-page-padding: clamp(1rem, 3.5vw, 2.5rem);
@@ -142,9 +151,9 @@ md-menu:not(:defined) {
 ) {
     --site-button-default-container-height: 2.5rem;
     --site-button-resting-shape: calc(var(--site-button-container-height) / 2);
-    --site-button-pressed-shape: var(--md-sys-shape-corner-extra-small);
-    --site-button-shape-duration: 200ms;
-    --site-button-shape-easing: ease;
+    --site-button-pressed-shape: var(--site-expressive-pressed-shape);
+    --site-button-shape-duration: var(--site-expressive-shape-duration);
+    --site-button-shape-easing: var(--site-expressive-shape-easing);
     --site-button-shape: var(--site-button-resting-shape);
 
     border-radius: var(--site-button-shape);
@@ -329,6 +338,188 @@ md-text-button:not(:defined) > [slot="icon"] {
     font-size: var(--site-button-icon-size);
 }
 
+:is(
+    md-icon-button,
+    md-filled-icon-button,
+    md-filled-tonal-icon-button,
+    md-outlined-icon-button
+) {
+    --site-icon-button-default-size: 2.5rem;
+    --site-icon-button-resting-shape: calc(
+        min(var(--site-icon-button-width), var(--site-icon-button-height)) / 2
+    );
+    --site-icon-button-pressed-shape: var(--site-expressive-pressed-shape);
+    --site-icon-button-shape-duration: var(--site-expressive-shape-duration);
+    --site-icon-button-shape-easing: var(--site-expressive-shape-easing);
+    --site-icon-button-shape: var(--site-icon-button-resting-shape);
+
+    border-radius: var(--site-icon-button-shape);
+    transition: --site-icon-button-shape
+        var(--site-icon-button-shape-duration)
+        var(--site-icon-button-shape-easing);
+}
+
+md-icon-button {
+    --site-icon-button-width: var(
+        --md-icon-button-state-layer-width,
+        var(--site-icon-button-default-size)
+    );
+    --site-icon-button-height: var(
+        --md-icon-button-state-layer-height,
+        var(--site-icon-button-default-size)
+    );
+    --md-icon-button-state-layer-shape: var(--site-icon-button-shape);
+}
+
+md-filled-icon-button {
+    --site-icon-button-width: var(
+        --md-filled-icon-button-container-width,
+        var(--site-icon-button-default-size)
+    );
+    --site-icon-button-height: var(
+        --md-filled-icon-button-container-height,
+        var(--site-icon-button-default-size)
+    );
+    --md-filled-icon-button-container-shape: var(--site-icon-button-shape);
+}
+
+md-filled-tonal-icon-button {
+    --site-icon-button-width: var(
+        --md-filled-tonal-icon-button-container-width,
+        var(--site-icon-button-default-size)
+    );
+    --site-icon-button-height: var(
+        --md-filled-tonal-icon-button-container-height,
+        var(--site-icon-button-default-size)
+    );
+    --md-filled-tonal-icon-button-container-shape: var(
+        --site-icon-button-shape
+    );
+}
+
+md-outlined-icon-button {
+    --site-icon-button-width: var(
+        --md-outlined-icon-button-container-width,
+        var(--site-icon-button-default-size)
+    );
+    --site-icon-button-height: var(
+        --md-outlined-icon-button-container-height,
+        var(--site-icon-button-default-size)
+    );
+    --md-outlined-icon-button-container-shape: var(--site-icon-button-shape);
+}
+
+:is(
+    md-icon-button,
+    md-filled-icon-button,
+    md-filled-tonal-icon-button,
+    md-outlined-icon-button
+):active {
+    --site-icon-button-shape: var(--site-icon-button-pressed-shape);
+}
+
+:is(
+    md-icon-button,
+    md-filled-icon-button,
+    md-filled-tonal-icon-button,
+    md-outlined-icon-button
+):not(:defined) {
+    --site-icon-button-icon-size: 1.5rem;
+
+    box-sizing: border-box;
+    display: inline-flex;
+    width: var(--site-icon-button-width);
+    height: var(--site-icon-button-height);
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 0;
+    border-radius: var(--site-icon-button-shape);
+    background: transparent;
+    color: var(--md-sys-color-on-surface-variant);
+    cursor: pointer;
+    vertical-align: top;
+}
+
+md-icon-button:not(:defined) {
+    --site-icon-button-icon-size: var(--md-icon-button-icon-size, 1.5rem);
+
+    color: var(
+        --md-icon-button-icon-color,
+        var(--md-sys-color-on-surface-variant)
+    );
+}
+
+md-filled-icon-button:not(:defined) {
+    --site-icon-button-icon-size: var(
+        --md-filled-icon-button-icon-size,
+        1.5rem
+    );
+
+    background: var(
+        --md-filled-icon-button-container-color,
+        var(--md-sys-color-primary)
+    );
+    color: var(
+        --md-filled-icon-button-icon-color,
+        var(--md-sys-color-on-primary)
+    );
+}
+
+md-filled-tonal-icon-button:not(:defined) {
+    --site-icon-button-icon-size: var(
+        --md-filled-tonal-icon-button-icon-size,
+        1.5rem
+    );
+
+    background: var(
+        --md-filled-tonal-icon-button-container-color,
+        var(--md-sys-color-secondary-container)
+    );
+    color: var(
+        --md-filled-tonal-icon-button-icon-color,
+        var(--md-sys-color-on-secondary-container)
+    );
+}
+
+md-outlined-icon-button:not(:defined) {
+    --site-icon-button-icon-size: var(
+        --md-outlined-icon-button-icon-size,
+        1.5rem
+    );
+
+    box-shadow: inset 0 0 0
+        var(--md-outlined-icon-button-outline-width, 0.0625rem)
+        var(
+            --md-outlined-icon-button-outline-color,
+            var(--md-sys-color-outline)
+        );
+    color: var(
+        --md-outlined-icon-button-icon-color,
+        var(--md-sys-color-on-surface-variant)
+    );
+}
+
+:is(
+    md-icon-button,
+    md-filled-icon-button,
+    md-filled-tonal-icon-button,
+    md-outlined-icon-button
+):not(:defined) > md-icon {
+    font-size: var(--site-icon-button-icon-size);
+}
+
+:is(
+    md-icon-button,
+    md-filled-icon-button,
+    md-filled-tonal-icon-button,
+    md-outlined-icon-button
+):not(:defined) > .brand-icon {
+    width: var(--site-icon-button-icon-size);
+    height: var(--site-icon-button-icon-size);
+}
+
 .app-header {
     position: relative;
     z-index: 20;
@@ -419,23 +610,6 @@ md-text-button:not(:defined) > [slot="icon"] {
     --md-filled-tonal-icon-button-container-width: var(--header-action-size);
     --md-filled-tonal-icon-button-container-height: var(--header-action-size);
     --md-filled-tonal-icon-button-icon-size: 1.55rem;
-}
-
-.header-actions md-filled-tonal-icon-button:not(:defined) {
-    box-sizing: border-box;
-    display: inline-flex;
-    width: var(--md-filled-tonal-icon-button-container-width);
-    height: var(--md-filled-tonal-icon-button-container-height);
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 0;
-    border-radius: var(--md-sys-shape-corner-full);
-    background: var(--md-filled-tonal-icon-button-container-color);
-    color: var(--md-filled-tonal-icon-button-icon-color);
-    cursor: pointer;
-    vertical-align: top;
 }
 
 .header-actions md-icon {
