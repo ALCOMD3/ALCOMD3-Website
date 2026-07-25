@@ -1,4 +1,4 @@
-@property --site-expressive-button-shape {
+@property --site-button-shape {
     syntax: "<length>";
     inherits: true;
     initial-value: 0px;
@@ -133,10 +133,80 @@ md-menu:not(:defined) {
     display: none;
 }
 
+:is(
+    md-elevated-button,
+    md-filled-button,
+    md-filled-tonal-button,
+    md-outlined-button,
+    md-text-button
+) {
+    --site-button-default-container-height: 2.5rem;
+    --site-button-resting-shape: calc(var(--site-button-container-height) / 2);
+    --site-button-pressed-shape: var(--md-sys-shape-corner-extra-small);
+    --site-button-shape-duration: 200ms;
+    --site-button-shape-easing: ease;
+    --site-button-shape: var(--site-button-resting-shape);
+
+    border-radius: var(--site-button-shape);
+    transition: --site-button-shape var(--site-button-shape-duration)
+        var(--site-button-shape-easing);
+}
+
+md-elevated-button {
+    --site-button-container-height: var(
+        --md-elevated-button-container-height,
+        var(--site-button-default-container-height)
+    );
+    --md-elevated-button-container-shape: var(--site-button-shape);
+}
+
+md-filled-button {
+    --site-button-container-height: var(
+        --md-filled-button-container-height,
+        var(--site-button-default-container-height)
+    );
+    --md-filled-button-container-shape: var(--site-button-shape);
+}
+
+md-filled-tonal-button {
+    --site-button-container-height: var(
+        --md-filled-tonal-button-container-height,
+        var(--site-button-default-container-height)
+    );
+    --md-filled-tonal-button-container-shape: var(--site-button-shape);
+}
+
+md-outlined-button {
+    --site-button-container-height: var(
+        --md-outlined-button-container-height,
+        var(--site-button-default-container-height)
+    );
+    --md-outlined-button-container-shape: var(--site-button-shape);
+}
+
+md-text-button {
+    --site-button-container-height: var(
+        --md-text-button-container-height,
+        var(--site-button-default-container-height)
+    );
+    --md-text-button-container-shape: var(--site-button-shape);
+}
+
+:is(
+    md-elevated-button,
+    md-filled-button,
+    md-filled-tonal-button,
+    md-outlined-button,
+    md-text-button
+):active {
+    --site-button-shape: var(--site-button-pressed-shape);
+}
+
+md-elevated-button:not(:defined),
 md-filled-button:not(:defined),
 md-filled-tonal-button:not(:defined),
-md-outlined-button:not(:defined) {
-    --site-button-container-height: 2.5rem;
+md-outlined-button:not(:defined),
+md-text-button:not(:defined) {
     --site-button-icon-size: 1.125rem;
     --site-button-label-line-height: 1.25rem;
     --site-button-label-size: 0.875rem;
@@ -149,7 +219,7 @@ md-outlined-button:not(:defined) {
     justify-content: center;
     gap: 0.5rem;
     border: 0;
-    border-radius: var(--md-sys-shape-corner-full);
+    border-radius: var(--site-button-shape);
     cursor: pointer;
     padding: calc(
         (
@@ -166,8 +236,28 @@ md-outlined-button:not(:defined) {
     vertical-align: top;
 }
 
+md-elevated-button:not(:defined) {
+    --site-button-icon-size: var(--md-elevated-button-icon-size, 1.125rem);
+    --site-button-label-line-height: var(
+        --md-elevated-button-label-text-line-height,
+        1.25rem
+    );
+    --site-button-label-size: var(
+        --md-elevated-button-label-text-size,
+        0.875rem
+    );
+
+    background: var(
+        --md-elevated-button-container-color,
+        var(--md-sys-color-surface-container-low)
+    );
+    color: var(
+        --md-elevated-button-label-text-color,
+        var(--md-sys-color-primary)
+    );
+}
+
 md-filled-button:not(:defined) {
-    --site-button-container-height: var(--md-filled-button-container-height, 2.5rem);
     --site-button-icon-size: var(--md-filled-button-icon-size, 1.125rem);
     --site-button-label-line-height: var(--md-filled-button-label-text-line-height, 1.25rem);
     --site-button-label-size: var(--md-filled-button-label-text-size, 0.875rem);
@@ -177,7 +267,6 @@ md-filled-button:not(:defined) {
 }
 
 md-filled-tonal-button:not(:defined) {
-    --site-button-container-height: var(--md-filled-tonal-button-container-height, 2.5rem);
     --site-button-icon-size: var(--md-filled-tonal-button-icon-size, 1.125rem);
     --site-button-label-line-height: var(
         --md-filled-tonal-button-label-text-line-height,
@@ -196,7 +285,6 @@ md-filled-tonal-button:not(:defined) {
 }
 
 md-outlined-button:not(:defined) {
-    --site-button-container-height: var(--md-outlined-button-container-height, 2.5rem);
     --site-button-icon-size: var(--md-outlined-button-icon-size, 1.125rem);
     --site-button-label-line-height: var(
         --md-outlined-button-label-text-line-height,
@@ -210,15 +298,31 @@ md-outlined-button:not(:defined) {
     color: var(--md-outlined-button-label-text-color, var(--md-sys-color-primary));
 }
 
+md-text-button:not(:defined) {
+    --site-button-icon-size: var(--md-text-button-icon-size, 1.125rem);
+    --site-button-label-line-height: var(
+        --md-text-button-label-text-line-height,
+        1.25rem
+    );
+    --site-button-label-size: var(--md-text-button-label-text-size, 0.875rem);
+
+    background: transparent;
+    color: var(--md-text-button-label-text-color, var(--md-sys-color-primary));
+}
+
+md-elevated-button:not(:defined):has(> [slot="icon"]),
 md-filled-button:not(:defined):has(> [slot="icon"]),
 md-filled-tonal-button:not(:defined):has(> [slot="icon"]),
-md-outlined-button:not(:defined):has(> [slot="icon"]) {
+md-outlined-button:not(:defined):has(> [slot="icon"]),
+md-text-button:not(:defined):has(> [slot="icon"]) {
     padding-inline: 1rem 1.5rem;
 }
 
+md-elevated-button:not(:defined) > [slot="icon"],
 md-filled-button:not(:defined) > [slot="icon"],
 md-filled-tonal-button:not(:defined) > [slot="icon"],
-md-outlined-button:not(:defined) > [slot="icon"] {
+md-outlined-button:not(:defined) > [slot="icon"],
+md-text-button:not(:defined) > [slot="icon"] {
     width: var(--site-button-icon-size);
     height: var(--site-button-icon-size);
     flex: none;
@@ -403,15 +507,7 @@ md-menu-item {
 }
 
 .hero-actions {
-    --site-expressive-button-container-height: 3.5rem;
-    --site-expressive-button-resting-shape: calc(
-        var(--site-expressive-button-container-height) / 2
-    );
-    --site-expressive-button-pressed-shape: var(
-        --md-sys-shape-corner-extra-small
-    );
-    --site-expressive-button-shape-duration: 200ms;
-    --site-expressive-button-shape-easing: ease;
+    --site-hero-action-container-height: 3.5rem;
 
     display: flex;
     flex-wrap: wrap;
@@ -421,36 +517,15 @@ md-menu-item {
 
 .hero-actions md-filled-button,
 .hero-actions md-outlined-button {
-    --site-expressive-button-shape: var(
-        --site-expressive-button-resting-shape
-    );
-    --md-filled-button-container-shape: var(--site-expressive-button-shape);
-    --md-outlined-button-container-shape: var(--site-expressive-button-shape);
     min-width: 13.5rem;
-    border-radius: var(--site-expressive-button-shape);
-    transition: --site-expressive-button-shape
-        var(--site-expressive-button-shape-duration)
-        var(--site-expressive-button-shape-easing);
     --md-filled-button-container-height: var(
-        --site-expressive-button-container-height
+        --site-hero-action-container-height
     );
     --md-filled-button-label-text-size: 1rem;
     --md-outlined-button-container-height: var(
-        --site-expressive-button-container-height
+        --site-hero-action-container-height
     );
     --md-outlined-button-label-text-size: 1rem;
-}
-
-.hero-actions md-filled-button:active,
-.hero-actions md-outlined-button:active {
-    --site-expressive-button-shape: var(
-        --site-expressive-button-pressed-shape
-    );
-}
-
-.hero-actions md-filled-button:not(:defined),
-.hero-actions md-outlined-button:not(:defined) {
-    min-height: var(--site-expressive-button-container-height);
 }
 
 .hero-actions .brand-icon {
