@@ -561,10 +561,14 @@ md-outlined-icon-button:not(:defined) {
 
 .header-partner-button {
     --md-filled-tonal-button-container-color: var(--md-sys-color-primary-container);
+    --md-filled-tonal-button-container-elevation: 0;
     --md-filled-tonal-button-container-height: var(--header-action-size);
+    --md-filled-tonal-button-focus-container-elevation: 0;
+    --md-filled-tonal-button-hover-container-elevation: 0;
     --md-filled-tonal-button-icon-size: 2.25rem;
     --md-filled-tonal-button-label-text-color: var(--md-sys-color-on-primary-container);
     --md-filled-tonal-button-label-text-size: 0.95rem;
+    --md-filled-tonal-button-pressed-container-elevation: 0;
 }
 
 .header-partner-button img {
