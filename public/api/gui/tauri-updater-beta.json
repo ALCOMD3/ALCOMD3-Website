@@ -1,20 +1,20 @@
 {
-  "version": "3.0.1-beta.1",
-  "notes": "ALCOMD3 v3.0.1-beta.1. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1 for details.",
+  "version": "3.1.0-beta.1",
+  "notes": "ALCOMD3 v3.1.0-beta.1. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1 for details.",
   "notes_i18n": {
-    "de": "Verbessert den Zugriff auf Erweiterungen und die Sichtbarkeitssteuerung der Seitenleiste; Projekte, Ressourcen und Einstellungen bleiben verfügbar.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1",
-    "en": "Improves extension access and sidebar visibility controls while keeping Projects, Resources, and Settings available.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1",
-    "fr": "Améliore l’accès aux extensions et les contrôles de visibilité de la barre latérale, tout en gardant Projets, Ressources et Paramètres disponibles.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1",
-    "ja": "拡張機能へのアクセスとサイドバーの表示設定を改善し、プロジェクト、リソース、設定を常に利用できるようにしました。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1",
-    "ko": "확장 프로그램 접근성과 사이드바 표시 제어를 개선하고 프로젝트, 리소스, 설정을 항상 사용할 수 있도록 했습니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1",
-    "zh_hans": "改进扩展访问和侧边栏显示控制，并确保项目、资源和设置始终可用。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1",
-    "zh_hant": "改進擴充功能存取和側邊欄顯示控制，並確保專案、資源和設定始終可用。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.1-beta.1"
+    "de": "Stellt ALCOMD3 MCP auf geschütztes lokales Streamable HTTP um, ergänzt eine optionale Schnelleinrichtung für Codex, Claude Code und Cursor und bündelt die Konfiguration in einem eigenen Dialog.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1",
+    "en": "Moves ALCOMD3 MCP to protected local Streamable HTTP, adds optional quick setup for Codex, Claude Code, and Cursor, and groups configuration in a dedicated dialog.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1",
+    "fr": "Fait passer ALCOMD3 MCP à Streamable HTTP local protégé, ajoute une configuration rapide facultative pour Codex, Claude Code et Cursor, et regroupe la configuration dans une boîte de dialogue dédiée.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1",
+    "ja": "ALCOMD3 MCP を保護されたローカルの Streamable HTTP に移行し、Codex、Claude Code、Cursor の任意のクイック設定と専用の設定ダイアログを追加しました。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1",
+    "ko": "ALCOMD3 MCP를 보호된 로컬 Streamable HTTP로 전환하고 Codex, Claude Code, Cursor용 선택적 빠른 설정과 전용 설정 대화 상자를 추가했습니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1",
+    "zh_hans": "将 ALCOMD3 MCP 迁移到受保护的本机 Streamable HTTP，新增 Codex、Claude Code 和 Cursor 的可选快速配置，并将配置集中到专用弹窗。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1",
+    "zh_hant": "將 ALCOMD3 MCP 遷移到受保護的本機 Streamable HTTP，新增 Codex、Claude Code 和 Cursor 的選用快速設定，並將設定集中到專用對話框。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.1"
   },
-  "pub_date": "2026-07-26T21:56:35Z",
+  "pub_date": "2026-07-27T19:37:29Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1hoNHVsWG1xenRzMmdjTENQMkM4Z3M1ejRseWFVSWdZVG5YeFVLbG9DWmFQN2RsWjFaNXByK2VGRlF0YjB0c1Iya0tuOTlPeHdrUEtETHlpMlZ4WmdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MTAyODEzCWZpbGU6QUxDT01EM18zLjAuMS1iZXRhLjFfd2luZG93c194ODZfNjRfc2V0dXAuZXhlCXB1cnBvc2U6cmVsZWFzZQpqVkNTYVo4Vjk1K2Q2cFRoR3FsMGJEYnJTdFRmbGQ0RmdTNC9odElnT1dONWs4N3plbEQwNlIxcmFCTmRDSE5iU08yOUQ2WXdISHR1eU1DL2cvb05BUT09Cg==",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.1-beta.1/ALCOMD3_3.0.1-beta.1_windows_x86_64_setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2FzYzVlMi9WZEdybUN3NWlhTGFTTkk2ZVVTaEl1RmFBM0JhUUlsb1crajMzZHBOUllMenFoMEQrMkRJd3FScDZCWnpzMjhmeHk5WnRDcUhaUStaK3dRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MTgwOTI2CWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjFfd2luZG93c194ODZfNjRfc2V0dXAuZXhlCXB1cnBvc2U6cmVsZWFzZQp4dUNoT0p5cDM5c0NZNGttL0FkNzV4a1RRNWcwWlJnVFh5UHpLN3kxLzVOalFSOFkyb1diQUxYcnRjSTN1Vk5wRXptSDBPZUhqQkF1V0JWaGtaK3RDUT09Cg==",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.1/ALCOMD3_3.1.0-beta.1_windows_x86_64_setup.exe",
       "args": [
         "/SP-",
         "/SILENT",
@@ -24,13 +24,13 @@
       ]
     },
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1VTQVBaMjJ4SEtvSkdRZGo5TEpjVGVpWVFlSVRpV3dueVVMNUNhTzBnQ04zb3BYN0xwRmRVc0gva2JEWVBUeTdoMVJuTGpmbXUrcmYrR09iakpaNXc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MTAyODE5CWZpbGU6QUxDT01EM18zLjAuMS1iZXRhLjFfbWFjb3NfYWFyY2g2NC5hcHAudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQp4SDh4MFFCM3RVcVE5aEhiVHc2Z3hLNUljUlFLVEJ4QTN4dU9ieDF6c2pNL0NWWW1Nd2VSQklWUUdPMi9EN1pvS2Z4aUVqKzFIbGZsazhuMzV0TU5BZz09Cg==",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.1-beta.1/ALCOMD3_3.0.1-beta.1_macos_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2VTejFkaFJOMWdBaXNlcHBKU1hrWHFFSW5pb0ZCSXNLRzFPb3ZmMDB0MEdhSFFwZmpOeWtmMFlHQmdjYXBQcDN6ZEo2Smc1K3lheWw0UXRqMzR2dVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MTgwOTMxCWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjFfbWFjb3NfYWFyY2g2NC5hcHAudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQpSWkRQL1dhdTg2NDI1M2w1K2U2bTNwcStGQnFPeW1pZFEvam1ZcEVYbVVxdWF3cjNHdEVKNXNBU050MkMvYmpYRTlJSFl6eWp1dHBvcFhCRWpzZE5CZz09Cg==",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.1/ALCOMD3_3.1.0-beta.1_macos_aarch64.app.tar.gz",
       "args": []
     },
     "linux-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2F4WmpPblkyaGJzR01BRjFNL3N3T2pQQ0wzaTgvV1F1R2hRenJoTThtQkJJeVIyZ2M3V0tWdFM4Wk9tOWNQNk9aRXZyMFppL3lwZ3JvamY2c09yd1FRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MTAyODI2CWZpbGU6QUxDT01EM18zLjAuMS1iZXRhLjFfbGludXhfeDg2XzY0LkFwcEltYWdlLnRhci5neglwdXJwb3NlOnJlbGVhc2UKVytQWWM0a0l0N0JmbDBGNTlhMW1FaUN0RElFK0ptVVRtSURwK0dVYnhBVDJ5ayttS0MzaTMrUFUwanZmT3NEWWszY2N1VS9zU3djbkNic080WVg2QlE9PQo=",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.1-beta.1/ALCOMD3_3.0.1-beta.1_linux_x86_64.AppImage.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2VYNXF5MUV5bDUrSkpOSWY4ZTd1WmZNWU9OamdWQnNPTTdYb3NuK05YNXBJLzR1TW9vNVJJTWFzOEYyMzZmUCtyRERtYlgwaTc1eVlLOHo0cVJyMVFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MTgwOTM3CWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjFfbGludXhfeDg2XzY0LkFwcEltYWdlLnRhci5neglwdXJwb3NlOnJlbGVhc2UKcXlkU1pKUzJnQ0ZLWGw3eU83OWRPRE1LUzl0MkdwU1JBR3FyNms5ZjQvc1haQ2c0WERGOW9rSVhsTFF5Y2pRM0wxVWdBVHF6aytvbFV5dklYVVI1Qnc9PQo=",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.1/ALCOMD3_3.1.0-beta.1_linux_x86_64.AppImage.tar.gz",
       "args": []
     }
   }
