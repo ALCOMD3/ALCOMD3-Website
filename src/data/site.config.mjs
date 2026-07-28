@@ -28,6 +28,7 @@ export const siteConfig = {
     url: homepageUrl,
     name: alcomd3Config.productName,
     shortName: alcomd3Config.productName,
+    googleAnalyticsMeasurementId: alcomd3Config.googleAnalyticsMeasurementId,
     authorName: alcomd3Config.publisherName,
     authorUrl: `https://github.com/${publisherRepositoryOwner}`,
     repositoryUrl,

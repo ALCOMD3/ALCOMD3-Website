@@ -44,6 +44,13 @@ const fontStylesheets = [
     localeFontStylesheet,
     pagePath === siteConfig.mcpDocsPath ? notoSansMonoStylesheet : null,
 ].filter((stylesheet): stylesheet is string => Boolean(stylesheet));
+const googleAnalyticsMeasurementId = import.meta.env.PROD
+    ? siteConfig.googleAnalyticsMeasurementId
+    : null;
+const googleTagUrl = new URL("https://www.googletagmanager.com/gtag/js");
+if (googleAnalyticsMeasurementId) {
+    googleTagUrl.searchParams.set("id", googleAnalyticsMeasurementId);
+}
 const siteUrl = Astro.site ?? new URL(canonicalUrl);
 const ogImageUrl = new URL(siteConfig.ogImagePath, siteUrl).href;
 const logoUrl = new URL(siteConfig.logoPath, siteUrl).href;
@@ -108,6 +115,21 @@ const themeBootstrapConfig = {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {googleAnalyticsMeasurementId && (
+            <>
+                <script is:inline async src={googleTagUrl.href}></script>
+                <script is:inline define:vars={{ googleAnalyticsMeasurementId }}>
+                    window.dataLayer = window.dataLayer || [];
+
+                    function gtag() {
+                        window.dataLayer.push(arguments);
+                    }
+
+                    gtag("js", new Date());
+                    gtag("config", googleAnalyticsMeasurementId);
+                </script>
+            </>
+        )}
         <meta name="description" content={description}>
         <meta name="robots" content="index, follow">
         <meta name="author" content={siteConfig.authorName}>
