@@ -54,7 +54,7 @@
     border-radius: var(--md-sys-shape-corner-extra-small);
     background: var(--md-sys-color-surface-container-high);
     color: var(--md-sys-color-on-surface);
-    font-family: "Noto Sans Mono Variable", "Noto Sans Mono", ui-monospace, monospace;
+    font-family: "Noto Sans Mono", ui-monospace, monospace;
     font-size: 0.9em;
 }
 

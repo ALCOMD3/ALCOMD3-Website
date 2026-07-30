@@ -11,14 +11,6 @@ const sitemapLocales = Object.fromEntries(
     supportedUiLocales.map((locale) => [locale.toLowerCase(), locale]),
 );
 const defaultLocaleUrl = new URL(`${defaultRouteLocale}/`, `${siteConfig.url}/`).href;
-const stableFontDisplayPlugin = {
-    postcssPlugin: "stable-font-display",
-    Declaration(declaration) {
-        if (declaration.prop === "font-display" && declaration.value === "swap") {
-            declaration.value = "optional";
-        }
-    },
-};
 
 export default defineConfig({
     site: siteConfig.url,
@@ -65,13 +57,6 @@ export default defineConfig({
         routing: {
             prefixDefaultLocale: true,
             redirectToDefaultLocale: false,
-        },
-    },
-    vite: {
-        css: {
-            postcss: {
-                plugins: [stableFontDisplayPlugin],
-            },
         },
     },
 });

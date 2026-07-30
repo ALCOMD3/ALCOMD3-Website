@@ -58,6 +58,41 @@ test("the homepage does not request the GitHub API from the browser", async ({ p
     expect(githubApiRequests).toEqual([]);
 });
 
+test("localized web fonts are preloaded before first paint", async ({ page }) => {
+    for (const locale of supportedRouteLocales) {
+        await page.goto(`/${locale}/`);
+
+        const fontPreloads = await page
+            .locator('link[rel="preload"][as="font"][type="font/woff2"]')
+            .evaluateAll((links) => links.map((link) => link.href));
+        const fontDisplays = await page.evaluate(() => (
+            Array.from(document.styleSheets).flatMap((stylesheet) => {
+                try {
+                    return Array.from(stylesheet.cssRules);
+                } catch {
+                    return [];
+                }
+            })
+                .filter((rule) => rule instanceof CSSFontFaceRule)
+                .map((rule) => rule.style.fontDisplay)
+                .filter(Boolean)
+        ));
+
+        expect(fontPreloads).toHaveLength(locale === "en-us" ? 3 : 6);
+        expect(fontPreloads.every((href) => href.endsWith(".woff2"))).toBe(true);
+        expect(fontDisplays.length).toBeGreaterThan(0);
+        expect(new Set(fontDisplays)).toEqual(new Set(["swap"]));
+
+        await page.goto(`/${locale}/mcp/`);
+        const documentationFontPreloads = await page
+            .locator('link[rel="preload"][as="font"][type="font/woff2"]')
+            .evaluateAll((links) => links.map((link) => link.href));
+
+        expect(documentationFontPreloads).toHaveLength(locale === "en-us" ? 6 : 9);
+        expect(documentationFontPreloads.some((href) => href.includes("noto-sans-mono"))).toBe(true);
+    }
+});
+
 test.describe("without JavaScript", () => {
     test.use({ javaScriptEnabled: false });
 

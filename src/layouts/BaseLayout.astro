@@ -1,5 +1,19 @@
 ---
-import notoSansLatinFont from "@fontsource-variable/noto-sans/files/noto-sans-latin-wght-normal.woff2?url";
+import notoSansLatin400Font from "@fontsource/noto-sans/files/noto-sans-latin-400-normal.woff2?url";
+import notoSansLatin500Font from "@fontsource/noto-sans/files/noto-sans-latin-500-normal.woff2?url";
+import notoSansLatin700Font from "@fontsource/noto-sans/files/noto-sans-latin-700-normal.woff2?url";
+import notoSansJp400Font from "@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-400-normal.woff2?url";
+import notoSansJp500Font from "@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-500-normal.woff2?url";
+import notoSansJp700Font from "@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-700-normal.woff2?url";
+import notoSansMono400Font from "@fontsource/noto-sans-mono/files/noto-sans-mono-latin-400-normal.woff2?url";
+import notoSansMono500Font from "@fontsource/noto-sans-mono/files/noto-sans-mono-latin-500-normal.woff2?url";
+import notoSansMono700Font from "@fontsource/noto-sans-mono/files/noto-sans-mono-latin-700-normal.woff2?url";
+import notoSansSc400Font from "@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-400-normal.woff2?url";
+import notoSansSc500Font from "@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-500-normal.woff2?url";
+import notoSansSc700Font from "@fontsource/noto-sans-sc/files/noto-sans-sc-chinese-simplified-700-normal.woff2?url";
+import notoSansTc400Font from "@fontsource/noto-sans-tc/files/noto-sans-tc-chinese-traditional-400-normal.woff2?url";
+import notoSansTc500Font from "@fontsource/noto-sans-tc/files/noto-sans-tc-chinese-traditional-500-normal.woff2?url";
+import notoSansTc700Font from "@fontsource/noto-sans-tc/files/noto-sans-tc-chinese-traditional-700-normal.woff2?url";
 import notoSansStylesheet from "@/styles/fonts/noto-sans.css?url";
 import notoSansJpStylesheet from "@/styles/fonts/noto-sans-jp.css?url";
 import notoSansMonoStylesheet from "@/styles/fonts/noto-sans-mono.css?url";
@@ -44,6 +58,25 @@ const fontStylesheets = [
     localeFontStylesheet,
     pagePath === siteConfig.mcpDocsPath ? notoSansMonoStylesheet : null,
 ].filter((stylesheet): stylesheet is string => Boolean(stylesheet));
+const latinFontPreloads = [
+    notoSansLatin400Font,
+    notoSansLatin500Font,
+    notoSansLatin700Font,
+];
+const localeFontPreloads = {
+    "zh-CN": [notoSansSc400Font, notoSansSc500Font, notoSansSc700Font],
+    "zh-TW": [notoSansTc400Font, notoSansTc500Font, notoSansTc700Font],
+    "ja-JP": [notoSansJp400Font, notoSansJp500Font, notoSansJp700Font],
+    "en-US": [],
+}[locale.uiLocale];
+const monoFontPreloads = pagePath === siteConfig.mcpDocsPath
+    ? [notoSansMono400Font, notoSansMono500Font, notoSansMono700Font]
+    : [];
+const fontPreloads = [
+    ...latinFontPreloads,
+    ...localeFontPreloads,
+    ...monoFontPreloads,
+];
 const googleAnalyticsMeasurementId = import.meta.env.PROD
     ? siteConfig.googleAnalyticsMeasurementId
     : null;
@@ -164,13 +197,15 @@ const themeBootstrapConfig = {
         <link rel="icon" type="image/png" sizes="64x64" href="/assets/icon-64.png">
         <link rel="apple-touch-icon" href="/assets/icon-128.png">
         <link rel="manifest" href="/site.webmanifest">
-        <link
-            rel="preload"
-            href={notoSansLatinFont}
-            as="font"
-            type="font/woff2"
-            crossorigin
-        >
+        {fontPreloads.map((fontUrl) => (
+            <link
+                rel="preload"
+                href={fontUrl}
+                as="font"
+                type="font/woff2"
+                crossorigin
+            >
+        ))}
         {fontStylesheets.map((stylesheet) => (
             <link rel="stylesheet" href={stylesheet}>
         ))}

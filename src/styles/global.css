@@ -11,8 +11,8 @@
 }
 
 :root {
-    --md-ref-typeface-brand: "Noto Sans Variable", "Noto Sans SC Variable",
-        "Noto Sans TC Variable", "Noto Sans JP Variable", system-ui, sans-serif;
+    --md-ref-typeface-brand: "Noto Sans", "Noto Sans SC", "Noto Sans TC",
+        "Noto Sans JP", system-ui, sans-serif;
     --md-ref-typeface-plain: var(--md-ref-typeface-brand);
     --md-sys-typescale-display-large-font: var(--md-ref-typeface-brand);
     --md-sys-typescale-headline-large-font: var(--md-ref-typeface-brand);
@@ -554,7 +554,7 @@ md-outlined-icon-button:not(:defined) {
     gap: 0.9rem;
     color: var(--md-sys-color-primary);
     font-size: clamp(1.45rem, 3vw, 2.2rem);
-    font-weight: 750;
+    font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1;
     text-decoration: none;
@@ -703,7 +703,7 @@ md-menu-item {
     margin: 0 0 0.8rem;
     color: var(--md-sys-color-primary);
     font-size: 0.78rem;
-    font-weight: 760;
+    font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
 }
@@ -713,7 +713,7 @@ md-menu-item {
     margin: 0;
     color: var(--md-sys-color-on-surface);
     font-size: clamp(2.6rem, 4vw, 3.75rem);
-    font-weight: 720;
+    font-weight: 700;
     letter-spacing: -0.055em;
     line-height: 1.08;
 }
@@ -855,7 +855,7 @@ md-menu-item {
 .content-section h2 {
     margin: 0;
     font-size: clamp(2rem, 4vw, 3.4rem);
-    font-weight: 730;
+    font-weight: 700;
     letter-spacing: -0.04em;
     line-height: 1.15;
 }
@@ -886,7 +886,7 @@ md-menu-item {
     background: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
     font-size: 0.9rem;
-    font-weight: 650;
+    font-weight: 700;
 }
 
 .section-heading {
