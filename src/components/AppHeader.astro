@@ -11,6 +11,10 @@ type Props = {
 
 const { locale, pagePath = "" } = Astro.props;
 const homeHref = Astro.site ? new URL("/", Astro.site).pathname : "/";
+const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
+const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
+const isDownloadPage = pagePath === siteConfig.downloadPath;
+const isMcpPage = pagePath === siteConfig.mcpDocsPath;
 const themeOptions = [
     {
         value: "system",
@@ -32,10 +36,46 @@ const themeOptions = [
 
 <header class="app-header">
     <nav class="site-frame header-content" aria-label="ALCOMD3">
-        <a class="brand-link" href={homeHref} aria-label="ALCOMD3">
-            <img src="/assets/logo.png" alt="" width="52" height="52" aria-hidden="true">
-            <span>ALCOMD3</span>
-        </a>
+        <div class="header-leading">
+            <a class="brand-link" href={homeHref} aria-label="ALCOMD3">
+                <img src="/assets/logo.png" alt="" width="52" height="52" aria-hidden="true">
+                <span>ALCOMD3</span>
+            </a>
+            <div class="header-primary-links">
+                <md-text-button
+                    class="header-nav-button"
+                    href={downloadHref}
+                    aria-label={locale.downloads.sectionTitle}
+                    aria-current={isDownloadPage ? "page" : undefined}
+                >
+                    {locale.downloads.navigationLabel}
+                </md-text-button>
+                <md-icon-button
+                    class="header-nav-icon-button"
+                    href={downloadHref}
+                    aria-label={locale.downloads.sectionTitle}
+                    aria-current={isDownloadPage ? "page" : undefined}
+                >
+                    <MaterialIcon name="download" />
+                </md-icon-button>
+                <md-text-button
+                    class="header-nav-button"
+                    href={mcpHref}
+                    aria-label={locale.mcpDocsLabel}
+                    aria-current={isMcpPage ? "page" : undefined}
+                >
+                    {locale.mcpNavigationLabel}
+                </md-text-button>
+                <md-icon-button
+                    class="header-nav-icon-button"
+                    href={mcpHref}
+                    aria-label={locale.mcpDocsLabel}
+                    aria-current={isMcpPage ? "page" : undefined}
+                >
+                    <MaterialIcon name="code" />
+                </md-icon-button>
+            </div>
+        </div>
 
         <div class="header-actions">
             <md-filled-tonal-button
@@ -141,6 +181,8 @@ const themeOptions = [
 
 <script>
     import "@material/web/button/filled-tonal-button.js";
+    import "@material/web/button/text-button.js";
+    import "@material/web/iconbutton/icon-button.js";
     import "@material/web/iconbutton/filled-tonal-icon-button.js";
     import "@material/web/menu/menu.js";
     import "@material/web/menu/menu-item.js";

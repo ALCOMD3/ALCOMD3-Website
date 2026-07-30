@@ -34,6 +34,7 @@ type DownloadChannelContent = {
 
 type DownloadContent = {
     sectionTitle: string;
+    navigationLabel: string;
     sectionDescription: string;
     pageDescription: string;
     channelVersion: string;
@@ -56,6 +57,7 @@ export type LocaleContent = {
     githubLabel: string;
     contributorsTitle: string;
     mcpDocsLabel: string;
+    mcpNavigationLabel: string;
     mcpDocsPageTitle: string;
     mcpDocsPageDescription: string;
     mcpSectionTitle: string;
@@ -95,6 +97,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         githubLabel: "访问 GitHub",
         contributorsTitle: "贡献者",
         mcpDocsLabel: "MCP 文档",
+        mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP 说明",
         mcpDocsPageDescription: "阅读 ALCOMD3 本地 MCP bridge 文档，了解如何启用功能并配置支持 stdio 的 AI 客户端，查看项目、VPM 仓库、软件包、环境、活动记录和技术日志工具，以及项目创建、登记、备份、复制、恢复和单包管理的权限边界、生命周期、速率限制与故障排查方式，并掌握默认关闭、本机 IPC 与记录脱敏等安全设计。",
         mcpSectionTitle: "可选本地 MCP 集成",
@@ -140,6 +143,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         ],
         downloads: {
             sectionTitle: "下载 ALCOMD3",
+            navigationLabel: "下载",
             sectionDescription: "可手动选择稳定版或测试版，再下载与操作系统和处理器架构匹配的安装包。这里只提供实际发布的链接。",
             pageDescription: "下载 ALCOMD3 的 Windows x64、macOS Apple 芯片或 Linux x86_64 版本。按稳定版或测试版选择实际发布的安装包，可获取 Windows ZIP、macOS DMG、Linux AppImage 或 Debian/Ubuntu DEB，并查看版本、平台要求与暂不可用状态。",
             channelVersion: "{channel}：{version}",
@@ -223,6 +227,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         githubLabel: "前往 GitHub",
         contributorsTitle: "貢獻者",
         mcpDocsLabel: "MCP 文件",
+        mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP 說明",
         mcpDocsPageDescription: "閱讀 ALCOMD3 本機 MCP bridge 文件，瞭解如何啟用並設定支援 stdio 的 AI 客戶端，查看專案、VPM 儲存庫、套件、環境、活動記錄和技術日誌工具，以及專案建立、登記、備份、複製、還原和單一套件管理的權限邊界、生命週期、速率限制與疑難排解方式，並掌握預設停用、本機 IPC 與記錄脫敏等安全設計。",
         mcpSectionTitle: "可選本機 MCP 整合",
@@ -268,6 +273,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         ],
         downloads: {
             sectionTitle: "下載 ALCOMD3",
+            navigationLabel: "下載",
             sectionDescription: "可手動選擇穩定版或測試版，再下載符合作業系統與處理器架構的安裝包。這裡只提供實際發佈的連結。",
             pageDescription: "下載 ALCOMD3 的 Windows x64、macOS Apple 晶片或 Linux x86_64 版本。按穩定版或測試版選擇實際發佈的安裝包，可取得 Windows ZIP、macOS DMG、Linux AppImage 或 Debian/Ubuntu DEB，並查看版本、平台需求與暫不可用狀態。",
             channelVersion: "{channel}：{version}",
@@ -351,6 +357,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         githubLabel: "GitHub を開く",
         contributorsTitle: "コントリビューター",
         mcpDocsLabel: "MCP ドキュメント",
+        mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP ガイド",
         mcpDocsPageDescription: "ALCOMD3 のローカル MCP bridge ガイド。stdio 対応 AI クライアントへの設定、プロジェクト、VPM リポジトリ、パッケージ、環境、アクティビティ、技術ログの tools、作成、登録、バックアップ、コピー、復元、単一パッケージ操作の権限境界、ライフサイクル、トラブルシューティングを確認できます。",
         mcpSectionTitle: "任意のローカル MCP 連携",
@@ -396,6 +403,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         ],
         downloads: {
             sectionTitle: "ALCOMD3 をダウンロード",
+            navigationLabel: "ダウンロード",
             sectionDescription: "安定版またはベータ版を手動で選び、OS とプロセッサのアーキテクチャに合うパッケージをダウンロードできます。実際に公開されたリンクだけを表示します。",
             pageDescription: "ALCOMD3 の Windows x64、macOS Apple シリコン、Linux x86_64 版をダウンロードできます。安定版またはベータ版を選び、Windows ZIP、macOS DMG、Linux AppImage、Debian/Ubuntu DEB とバージョン、対応条件、提供状況を確認してください。",
             channelVersion: "{channel}：{version}",
@@ -479,6 +487,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         githubLabel: "Visit GitHub",
         contributorsTitle: "Contributors",
         mcpDocsLabel: "MCP Docs",
+        mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP Guide",
         mcpDocsPageDescription: "Learn how to enable and configure the ALCOMD3 local MCP bridge, use its project, repository, package, environment, and log tools, and troubleshoot setup issues.",
         mcpSectionTitle: "Optional Local MCP Integration",
@@ -524,6 +533,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         ],
         downloads: {
             sectionTitle: "Download ALCOMD3",
+            navigationLabel: "Download",
             sectionDescription: "Choose the stable or beta channel, then download a package that matches your operating system and processor architecture. Only actually published links are available here.",
             pageDescription: "Download ALCOMD3 for Windows x64, macOS Apple silicon, or Linux x86_64. Choose stable or beta builds and view versions, requirements, and available packages.",
             channelVersion: "{channel}: {version}",

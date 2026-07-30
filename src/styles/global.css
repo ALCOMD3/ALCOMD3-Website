@@ -534,6 +534,19 @@ md-outlined-icon-button:not(:defined) {
     gap: 1rem;
 }
 
+.header-leading {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.header-primary-links {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+}
+
 .brand-link {
     display: inline-flex;
     align-items: center;
@@ -549,6 +562,31 @@ md-outlined-icon-button:not(:defined) {
 .brand-link img {
     width: clamp(2.75rem, 5vw, 4rem);
     height: auto;
+}
+
+.header-nav-button {
+    --md-text-button-label-text-color: var(--md-sys-color-primary);
+    --md-text-button-label-text-size: 1rem;
+
+    flex: none;
+}
+
+md-icon-button.header-nav-icon-button {
+    --md-icon-button-icon-color: var(--md-sys-color-primary);
+
+    display: none;
+    flex: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .header-nav-button:not(:defined):hover,
+    .header-nav-icon-button:not(:defined):hover {
+        background: color-mix(
+            in srgb,
+            var(--md-sys-color-primary) 8%,
+            transparent
+        );
+    }
 }
 
 .header-actions {
@@ -1023,6 +1061,18 @@ md-menu-item {
 }
 
 @media (max-width: 36rem) {
+    .header-leading {
+        gap: 0.5rem;
+    }
+
+    md-text-button.header-nav-button {
+        display: none;
+    }
+
+    md-icon-button.header-nav-icon-button {
+        display: inline-flex;
+    }
+
     .brand-link span {
         font-size: 1.3rem;
     }
@@ -1058,8 +1108,35 @@ md-menu-item {
 }
 
 @media (max-width: 26rem) {
+    .header-content {
+        gap: 0.25rem;
+    }
+
+    .header-leading {
+        gap: 0.125rem;
+    }
+
     .brand-link span {
         display: none;
+    }
+
+    md-icon-button.header-nav-icon-button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .header-actions {
+        --header-action-size: 2.5rem;
+
+        gap: 0.125rem;
+    }
+}
+
+@media (max-width: 22rem) {
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-block: 0.75rem;
     }
 }
 
