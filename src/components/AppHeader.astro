@@ -10,7 +10,7 @@ type Props = {
 };
 
 const { locale, pagePath = "" } = Astro.props;
-const homeHref = Astro.site ? new URL("/", Astro.site).pathname : "/";
+const homeHref = getRelativeLocaleUrl(locale.lang, "");
 const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
 const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
 const isDownloadPage = pagePath === siteConfig.downloadPath;
