@@ -42,38 +42,28 @@ const themeOptions = [
                 <span>ALCOMD3</span>
             </a>
             <div class="header-primary-links">
-                <md-text-button
-                    class="header-nav-button"
+                <a
+                    class="header-nav-link"
                     href={downloadHref}
                     aria-label={locale.downloads.sectionTitle}
                     aria-current={isDownloadPage ? "page" : undefined}
                 >
-                    {locale.downloads.navigationLabel}
-                </md-text-button>
-                <md-icon-button
-                    class="header-nav-icon-button"
-                    href={downloadHref}
-                    aria-label={locale.downloads.sectionTitle}
-                    aria-current={isDownloadPage ? "page" : undefined}
-                >
-                    <MaterialIcon name="download" />
-                </md-icon-button>
-                <md-text-button
-                    class="header-nav-button"
+                    <span class="header-nav-link-label">
+                        {locale.downloads.navigationLabel}
+                    </span>
+                    <MaterialIcon class="header-nav-link-icon" name="download" />
+                </a>
+                <a
+                    class="header-nav-link"
                     href={mcpHref}
                     aria-label={locale.mcpDocsLabel}
                     aria-current={isMcpPage ? "page" : undefined}
                 >
-                    {locale.mcpNavigationLabel}
-                </md-text-button>
-                <md-icon-button
-                    class="header-nav-icon-button"
-                    href={mcpHref}
-                    aria-label={locale.mcpDocsLabel}
-                    aria-current={isMcpPage ? "page" : undefined}
-                >
-                    <MaterialIcon name="code" />
-                </md-icon-button>
+                    <span class="header-nav-link-label">
+                        {locale.mcpNavigationLabel}
+                    </span>
+                    <MaterialIcon class="header-nav-link-icon" name="code" />
+                </a>
             </div>
         </div>
 
@@ -181,8 +171,6 @@ const themeOptions = [
 
 <script>
     import "@material/web/button/filled-tonal-button.js";
-    import "@material/web/button/text-button.js";
-    import "@material/web/iconbutton/icon-button.js";
     import "@material/web/iconbutton/filled-tonal-icon-button.js";
     import "@material/web/menu/menu.js";
     import "@material/web/menu/menu-item.js";
