@@ -317,6 +317,7 @@ md-text-button:not(:defined) {
 
     background: transparent;
     color: var(--md-text-button-label-text-color, var(--md-sys-color-primary));
+    padding-inline: 0.75rem;
 }
 
 md-elevated-button:not(:defined):has(> [slot="icon"]),
@@ -569,10 +570,6 @@ md-outlined-icon-button:not(:defined) {
     --md-text-button-label-text-size: 1rem;
 
     flex: none;
-}
-
-md-text-button.header-nav-button:not(:defined) {
-    padding-inline: 0.75rem;
 }
 
 md-icon-button.header-nav-icon-button {
