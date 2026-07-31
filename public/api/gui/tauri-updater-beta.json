@@ -1,20 +1,20 @@
 {
-  "version": "3.1.0-beta.2",
-  "notes": "ALCOMD3 v3.1.0-beta.2. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2 for details.",
+  "version": "3.1.0-beta.3",
+  "notes": "ALCOMD3 v3.1.0-beta.3. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3 for details.",
   "notes_i18n": {
-    "de": "Hält ALCOMD3 reaktionsfähig, während MCP im Hintergrund startet, und aktualisiert Projekttypen sofort nach relevanten Änderungen.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2",
-    "en": "Keeps ALCOMD3 responsive while MCP starts in the background and refreshes project types immediately after relevant changes.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2",
-    "fr": "Maintient la réactivité d’ALCOMD3 pendant le démarrage de MCP en arrière-plan et actualise immédiatement les types de projet après les changements concernés.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2",
-    "ja": "MCP のバックグラウンド起動中も ALCOMD3 の応答性を保ち、関連する変更後にプロジェクト種別をすぐ更新します。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2",
-    "ko": "MCP가 백그라운드에서 시작되는 동안 ALCOMD3의 응답성을 유지하고 관련 변경 후 프로젝트 유형을 즉시 새로 고칩니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2",
-    "zh_hans": "让 ALCOMD3 在 MCP 后台启动期间保持响应，并在相关变更后立即刷新项目类型。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2",
-    "zh_hant": "讓 ALCOMD3 在 MCP 背景啟動期間保持回應，並在相關變更後立即重新整理專案類型。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.2"
+    "de": "Verbessert das Starten und in den Vordergrund holen von Unity-Projekten, hält Projektlisten bei Aktualisierungen stabil und aktualisiert gespeicherte Repository-Namen.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3",
+    "en": "Improves Unity project launching and focusing, keeps project lists stable during refreshes, and refreshes saved repository names.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3",
+    "fr": "Améliore le lancement et la mise au premier plan des projets Unity, maintient les listes de projets stables pendant leur actualisation et actualise les noms de dépôts enregistrés.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3",
+    "ja": "Unity プロジェクトの起動と前面表示を改善し、更新中もプロジェクト一覧を安定して表示し、保存済みリポジトリ名を更新します。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3",
+    "ko": "Unity 프로젝트의 시작과 전면 표시를 개선하고, 새로 고치는 동안 프로젝트 목록을 안정적으로 유지하며, 저장된 리포지토리 이름을 새로 고칩니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3",
+    "zh_hans": "改进 Unity 项目的启动与定位，在刷新期间保持项目列表稳定，并更新已保存的软件源名称。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3",
+    "zh_hant": "改善 Unity 專案的啟動與前景顯示，在重新整理期間保持專案清單穩定，並更新已儲存的軟體來源名稱。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0-beta.3"
   },
-  "pub_date": "2026-07-28T21:57:53Z",
+  "pub_date": "2026-07-31T17:10:19Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2FtaHJsaUxxSS9MbTNYNi9VY0JETDJCQUd1bk1rTG15Z2hsOC8xTkgzOW83ZVNxWTdGZ2syMDROWS9na1FNQktweUEyT0UrOTFjZGNNMlNQS2lKTkFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1Mjc1NzY2CWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjJfd2luZG93c194ODZfNjRfc2V0dXAuZXhlCXB1cnBvc2U6cmVsZWFzZQprMWRhMDdXRWFXYjBPaEhIMHJJd0U5UW4rNlJmUVpKRm01ekV6OGxDN2pBL1JCbWV1VzFpNEdLNTBkb1FqWDZBUmw3SmtiQ2k3b1M3b2lGclNiUlhEQT09Cg==",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.2/ALCOMD3_3.1.0-beta.2_windows_x86_64_setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1ZBQ0hIUmV4ZDh5Y3l6eUNERVorcGRSVlJFL2VtTzViUnc0bXZBWDJXSlcxUzk2aUg0ajlRSklkRHJyTzYxRmxlQkxweUNHZEVWZjBmS3ZxaXZtUWdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NTE3Njk3CWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjNfd2luZG93c194ODZfNjRfc2V0dXAuZXhlCXB1cnBvc2U6cmVsZWFzZQpTUGJnMW94bDBZTVVkU01NRmR5SHdHMHF5SC8yd1I0bkp6V2dNRVVPNEJHSDBReVBpbCtaM24vb015dzBJUkdkNklaVEczRXBlc2dGbVZkUzdNQXBEQT09Cg==",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.3/ALCOMD3_3.1.0-beta.3_windows_x86_64_setup.exe",
       "args": [
         "/SP-",
         "/SILENT",
@@ -24,13 +24,13 @@
       ]
     },
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2N4UlVwZk9qQnJFME1IOUpPSk1McjZNcnVsQVI4SGZpRE1pWDl6ZlpBQnRQZkh5YWNCUU9IanY2eEV0U3VkL3EzSHkrKzkyT08wR0djRU15VFUwdGdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1Mjc1NzcyCWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjJfbWFjb3NfYWFyY2g2NC5hcHAudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQpmK3RTMElyYUhZMlY3dDBFamxvemVYNFkvZXBnWUFKN3RkREVvOW4wdUN6L3RpVFE4MmlRT0FnQ1ZXOTE3MHgxWUN3S0N3UDZGZ1VCMG1uTkJFdVhCdz09Cg==",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.2/ALCOMD3_3.1.0-beta.2_macos_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2FqNC9FQ0VZVml6TGNmaE44NmFMTUZnMGpXY0x6WU4xMnVsbEI0cXM1NExXcWRkZGUzYUx2bzVKRnZBWk04YUNyUXoyL3hiZkF1NTJzK0Y5d0t3UmdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NTE3NzAzCWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjNfbWFjb3NfYWFyY2g2NC5hcHAudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQpkZ1BlbDlhcmVUamJUNUNBS3p3WkNnR2FqUDdVUVcrMXpPZk1zTjdSOWQ5ZVZ2SGVWZlkzaE51Sk5hSCtlUU1YQmd0RXByV0FGbnFrSExPNUI5U25Cdz09Cg==",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.3/ALCOMD3_3.1.0-beta.3_macos_aarch64.app.tar.gz",
       "args": []
     },
     "linux-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2M2QmZiU1Q2SU1zWnZEQVgrdU1ad2F4dE9hNlV0bmM0YlpCVkpDWTR2VDJIdi9iV3k0UzBYZUEwM2NjazdGS3lUaldjcmYvcFB3OVFOeVZQRTF1WEFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1Mjc1Nzc4CWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjJfbGludXhfeDg2XzY0LkFwcEltYWdlLnRhci5neglwdXJwb3NlOnJlbGVhc2UKZFhFWmpFM2tsNEU2bHZZb2U2Zm8xbDJMZDJqNzFwVy9KSVltNmtON3JsK0pIcUZKOEg0ZWRUZWRkYTJkSWlLN2prUHovdk1ZTzZHOS9NVWhiYTdzQ0E9PQo=",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.2/ALCOMD3_3.1.0-beta.2_linux_x86_64.AppImage.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2M2SlBiTWxBMmhhYjFQV1RyaWF4NjU3aDNGNVp5TG9KVmVqTDRjdHZJREs3ZlkzbUx4MjkvMnNKK0xkbTh1R1ZDQys5TXZLMG4wcU10bG5vOEtKRGdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NTE3NzA5CWZpbGU6QUxDT01EM18zLjEuMC1iZXRhLjNfbGludXhfeDg2XzY0LkFwcEltYWdlLnRhci5neglwdXJwb3NlOnJlbGVhc2UKWjFsakFxcjRDL0dBMjdHa1QxRGhoUG9nRkJqMSt6eUFrKzFOL09nVld6RUx4eVpGKzhldFV3UFMvYXZFYlVzYmlZNlZCaHZzUThaeWd0VWVRYkVXQWc9PQo=",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0-beta.3/ALCOMD3_3.1.0-beta.3_linux_x86_64.AppImage.tar.gz",
       "args": []
     }
   }
