@@ -1,20 +1,20 @@
 {
-  "version": "3.0.0",
-  "notes": "ALCOMD3 v3.0.0. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0 for details.",
+  "version": "3.1.0",
+  "notes": "ALCOMD3 v3.1.0. See https://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0 for details.",
   "notes_i18n": {
-    "de": "ALCOMD3 3.0.0 ist die erste öffentliche Version aus dem unabhängigen ALCOMD3-Repository.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0",
-    "en": "ALCOMD3 3.0.0 is the first public release from the independent ALCOMD3 repository.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0",
-    "fr": "ALCOMD3 3.0.0 est la première version publique issue du dépôt ALCOMD3 indépendant.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0",
-    "ja": "ALCOMD3 3.0.0 は、独立した ALCOMD3 リポジトリから公開される最初のリリースです。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0",
-    "ko": "ALCOMD3 3.0.0은 독립 ALCOMD3 저장소에서 공개되는 첫 번째 릴리스입니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0",
-    "zh_hans": "ALCOMD3 3.0.0 是独立 ALCOMD3 仓库的首个公开版本。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0",
-    "zh_hant": "ALCOMD3 3.0.0 是獨立 ALCOMD3 儲存庫的首個公開版本。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.0.0"
+    "de": "Fügt geschütztes lokales MCP mit Schnelleinrichtung für Clients hinzu, verbessert den Start und die Verwaltung von Unity-Projekten und hält Projekt- und Repository-Informationen aktuell.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0",
+    "en": "Adds protected local MCP with client quick setup, improves startup and Unity project handling, and keeps project and repository information current.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0",
+    "fr": "Ajoute un MCP local protégé avec configuration rapide des clients, améliore le démarrage et la gestion des projets Unity, et maintient à jour les informations sur les projets et les dépôts.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0",
+    "ja": "クライアントのクイック設定を備えた保護されたローカル MCP を追加し、起動と Unity プロジェクトの扱いを改善して、プロジェクトとリポジトリの情報を最新に保ちます。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0",
+    "ko": "클라이언트 빠른 설정을 갖춘 보호된 로컬 MCP를 추가하고, 시작과 Unity 프로젝트 처리를 개선하며, 프로젝트와 리포지토리 정보를 최신으로 유지합니다.\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0",
+    "zh_hans": "新增带客户端快速配置的受保护本机 MCP，改进启动和 Unity 项目处理，并让项目和软件源信息保持最新。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0",
+    "zh_hant": "新增具備用戶端快速設定的受保護本機 MCP，改善啟動和 Unity 專案處理，並讓專案和軟體來源資訊保持最新。\n\nhttps://github.com/ALCOMD3/ALCOMD3/releases/tag/v3.1.0"
   },
-  "pub_date": "2026-07-26T16:49:13Z",
+  "pub_date": "2026-07-31T19:09:05Z",
   "platforms": {
     "windows-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1RaZ0VuL242dGhSbzVPcDk2aStpMXJ5NXhaZ2hnOXhCeWptTHFWSHk3QURCWEc4OVlPT3JmQ3lGUHFESnRSL3JSaHZiMDdtcWFaQUpmMm5tenlFY2cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MDg0MzMyCWZpbGU6QUxDT01EM18zLjAuMF93aW5kb3dzX3g4Nl82NF9zZXR1cC5leGUJcHVycG9zZTpyZWxlYXNlCnFaa24vTTdNZWhpclZ2VWhTYW10RWxCb1hleGdja1llWndRZHYzajhNVy91Q0k3SjF5LzlsQUZSVXZUMXNTcXl6L0VyVTY3cEt5WUdPSXZ4c2hKbEJRPT0K",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0/ALCOMD3_3.0.0_windows_x86_64_setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2R2RjBxakdRempud0d1akxvd0RhdE10THowYUJLVlRtZjluaVlZUExsbWx3bXgzVXZ0YzdWVDZSUUM0VHAyQ3FCYjhsTjZ0MGtxVHVSQ0s5V1N0TWd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NTI0ODE4CWZpbGU6QUxDT01EM18zLjEuMF93aW5kb3dzX3g4Nl82NF9zZXR1cC5leGUJcHVycG9zZTpyZWxlYXNlCkJZNk5jTmdpMVE1ZVNnWjhva1IzZUNrYUMyblFNWDQrN1BxM1JmK1BLSzFyMjZHeTR3ZFRUeXFvamcxczNYSE4vekJna0F4bG9vM3FNNjB4a0UzVkFBPT0K",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0/ALCOMD3_3.1.0_windows_x86_64_setup.exe",
       "args": [
         "/SP-",
         "/SILENT",
@@ -24,13 +24,13 @@
       ]
     },
     "darwin-aarch64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1MwaWJ5VXp0OGVwYU01SXpBSUJsbllOMzVqSkRYSnIyMkR2eDI4V0J5UTZaTmZBSnpERHBJbUNSTGpLRld4QmI4L0NKWTdHMksxK1hEbVZrUURpRGdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MDg0MzM5CWZpbGU6QUxDT01EM18zLjAuMF9tYWNvc19hYXJjaDY0LmFwcC50YXIuZ3oJcHVycG9zZTpyZWxlYXNlCi9IWG14YlM4b2JlbGJjZGRHeVFUOFlKRXlZSWd6NG80RGpNWGFJQkE1emRwTXNyR3E5NktZT1h1QzZSaWZaTTZDMlowMjBjbGEwRWVNTEZML2RoR0FRPT0K",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0/ALCOMD3_3.0.0_macos_aarch64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M2E5OHUvVENHU1o4Y1pQbHVuYkM2NDRVY2ZMMEp4RjRnN2lxRFk0Y0d6WHpadGxLQmVRR1NXbnhydzdEQThYbWwrcFVDaVRrRjdLTjVXOXgyeFpiY2dRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NTI0ODIzCWZpbGU6QUxDT01EM18zLjEuMF9tYWNvc19hYXJjaDY0LmFwcC50YXIuZ3oJcHVycG9zZTpyZWxlYXNlCkNZUi9UNDY5ZklLWWV4Vk5jLzMybnlicUc3U1h6OW9OaHRCbEJEVURVVmlySTgwTHBHQkVUYVB3ZE02TWxxdjNVTXFTR0NaZXg2YVRJYVdKdS8zUkJnPT0K",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0/ALCOMD3_3.1.0_macos_aarch64.app.tar.gz",
       "args": []
     },
     "linux-x86_64": {
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1FobkdZYnZXNnAxTlIvbE82MktCK2lnSzl5VUZySjRUZXhvamYxY2YzVHRsSUtjdGxzYWlYVW1GR3FzRXQvZCtrcDdhcEdjMGVDZFZrU3ZzcFlNb1FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1MDg0MzQ1CWZpbGU6QUxDT01EM18zLjAuMF9saW51eF94ODZfNjQuQXBwSW1hZ2UudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQpvNm9FK3FKbzZDeUlwckp5clhQWStFUkdTVmI0SkFyS2hYY0JOMWc0WElqdVpXMkMzYm9MdG1aOEdzME54eVVTTzZEbHVZRjYzUHd2Vk1iMTB3dUxBdz09Cg==",
-      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.0.0/ALCOMD3_3.0.0_linux_x86_64.AppImage.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIEFMQ09NRDMgdXBkYXRlciBrZXkKUlVTd0JJVHZnNHp2M1VJUU5EUnJiWUt2TkZFYnVYS2dReG1YTjBxZXA5MXVjY1kyQ2NEbGxkZHJlM05SSDZHN3NaOTV6QndRaTZCNjFYREpzQnYyTkV4dW01eEUrZ1FLcHd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg1NTI0ODI3CWZpbGU6QUxDT01EM18zLjEuMF9saW51eF94ODZfNjQuQXBwSW1hZ2UudGFyLmd6CXB1cnBvc2U6cmVsZWFzZQpLYVFVaGZiWjlFSGNuM3pBUnhLSndDTkp0NUVvWjdVTFROMUovZTBnL0JET0kwOThiakpicDRzOERDbk1wLzl2empJSGwyZXRwd3BnaFJQWHRFWXRCQT09Cg==",
+      "url": "https://github.com/ALCOMD3/ALCOMD3/releases/download/v3.1.0/ALCOMD3_3.1.0_linux_x86_64.AppImage.tar.gz",
       "args": []
     }
   }
