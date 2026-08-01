@@ -34,29 +34,31 @@ const { documents, items, label } = Astro.props;
             </li>
         ))}
     </ul>
-    <p class="docs-toc-title">{label}</p>
-    <ol class="docs-toc-list">
-        {items.map((item) => (
-            <li>
-                <a class="docs-toc-link" href={`#${item.slug}`} data-docs-toc-link>
-                    {item.text}
-                </a>
-                {item.children.length > 0 && (
-                    <ol class="docs-toc-list docs-toc-list-nested">
-                        {item.children.map((child) => (
-                            <li>
-                                <a
-                                    class="docs-toc-link docs-toc-link-nested"
-                                    href={`#${child.slug}`}
-                                    data-docs-toc-link
-                                >
-                                    {child.text}
-                                </a>
-                            </li>
-                        ))}
-                    </ol>
-                )}
-            </li>
-        ))}
-    </ol>
+    <div class="docs-toc-section-scroll">
+        <p class="docs-toc-title">{label}</p>
+        <ol class="docs-toc-list">
+            {items.map((item) => (
+                <li>
+                    <a class="docs-toc-link" href={`#${item.slug}`} data-docs-toc-link>
+                        {item.text}
+                    </a>
+                    {item.children.length > 0 && (
+                        <ol class="docs-toc-list docs-toc-list-nested">
+                            {item.children.map((child) => (
+                                <li>
+                                    <a
+                                        class="docs-toc-link docs-toc-link-nested"
+                                        href={`#${child.slug}`}
+                                        data-docs-toc-link
+                                    >
+                                        {child.text}
+                                    </a>
+                                </li>
+                            ))}
+                        </ol>
+                    )}
+                </li>
+            ))}
+        </ol>
+    </div>
 </nav>
