@@ -53,8 +53,24 @@ body:has(.docs-page) {
     min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
+    scrollbar-color: var(--md-sys-color-primary) transparent;
     scrollbar-gutter: stable;
     scrollbar-width: thin;
+}
+
+.docs-toc-section-scroll::-webkit-scrollbar {
+    width: 0.625rem;
+}
+
+.docs-toc-section-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.docs-toc-section-scroll::-webkit-scrollbar-thumb {
+    border: 0.1875rem solid transparent;
+    border-radius: var(--md-sys-shape-corner-full);
+    background: var(--md-sys-color-primary);
+    background-clip: padding-box;
 }
 
 .docs-toc-title {
