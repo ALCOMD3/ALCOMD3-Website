@@ -60,6 +60,12 @@ export type LocaleContent = {
     mcpNavigationLabel: string;
     mcpDocsPageTitle: string;
     mcpDocsPageDescription: string;
+    mcpDocsTableOfContentsLabel: string;
+    mcpGuideNavigationLabel: string;
+    mcpToolsNavigationLabel: string;
+    mcpToolsPageTitle: string;
+    mcpToolsPageDescription: string;
+    mcpSourceLabel: string;
     mcpSectionTitle: string;
     mcpSectionDescription: string;
     appAdvantagesTitle: string;
@@ -99,9 +105,15 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         mcpDocsLabel: "MCP 文档",
         mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP 说明",
-        mcpDocsPageDescription: "阅读 ALCOMD3 本地 MCP bridge 文档，了解如何启用功能并配置支持 stdio 的 AI 客户端，查看项目、VPM 仓库、软件包、环境、活动记录和技术日志工具，以及项目创建、登记、备份、复制、恢复和单包管理的权限边界、生命周期、速率限制与故障排查方式，并掌握默认关闭、本机 IPC 与记录脱敏等安全设计。",
+        mcpDocsPageDescription: "阅读 ALCOMD3 本地 MCP 文档，了解如何启用内置扩展，通过带 bearer token 的本机 Streamable HTTP endpoint 配置 AI 客户端，并查看生命周期、安全边界和故障排查方式。",
+        mcpDocsTableOfContentsLabel: "本页目录",
+        mcpGuideNavigationLabel: "MCP 指南",
+        mcpToolsNavigationLabel: "工具参考",
+        mcpToolsPageTitle: "ALCOMD3 MCP 工具参考",
+        mcpToolsPageDescription: "查看 ALCOMD3 当前公开 MCP 工具的输入字段、输出结构、权限边界、错误语义和调用示例。",
+        mcpSourceLabel: "文档来源",
         mcpSectionTitle: "可选本地 MCP 集成",
-        mcpSectionDescription: "MCP 文档已经开放；本节概括 stdio bridge、本机 IPC、默认关闭的数据访问、日志查询，以及项目和仓库相关的受限写工具。",
+        mcpSectionDescription: "MCP 文档已经开放；本节概括本机 Streamable HTTP endpoint、bearer token、私有 IPC、默认关闭的数据访问和受限写工具。",
         appAdvantagesTitle: "桌面端体验与核心优势",
         appearanceLabel: "外观",
         appearanceSystem: "跟随系统",
@@ -110,7 +122,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         title: "ALCOMD3 - 开源 VCC 替代品与 VRChat Unity 项目管理工具",
         description: "ALCOMD3 是起源于 ALCOM/vrc-get 的开源 VRChat Creator Companion（VCC）替代工具，用于管理 VRChat Unity 项目、VPM 软件包和仓库，支持项目创建、备份、复制、恢复、更新与 vcc:// 关联，并提供可选的本地 MCP bridge，便于创作者集中维护项目。",
         twitterDescription: "开源 VRChat Creator Companion（VCC）替代品，面向 VRChat Unity 项目与 VPM 软件包管理，提供仓库、备份、更新和可选本地 MCP bridge。",
-        structuredDescription: "ALCOMD3 是起源于 ALCOM/vrc-get 的独立开源桌面工具，可作为 VRChat Creator Companion（VCC）替代品管理 VRChat Unity 项目、VPM 仓库和软件包，提供备份、更新、vcc:// 关联以及可选本地 MCP bridge。MCP 通过 stdio 与本机 IPC 提供项目、仓库、软件包、环境设置、活动记录和技术日志可见性，并支持项目创建、已有项目登记、VPM 仓库登记、备份、复制、恢复和单包安装、卸载、重装等受限操作。",
+        structuredDescription: "ALCOMD3 是起源于 ALCOM/vrc-get 的独立开源桌面工具，可作为 VRChat Creator Companion（VCC）替代品管理 VRChat Unity 项目、VPM 仓库和软件包。MCP 通过仅监听 127.0.0.1、带 bearer token 的 Streamable HTTP endpoint 和私有 IPC 提供受控的查询与写入能力。",
         seoKeywords: [
             "ALCOMD3",
             "VCC替代品",
@@ -188,7 +200,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         advantages: [
             {
                 title: "可选本地 MCP bridge",
-                body: "通过 stdio MCP server 接入支持 MCP 的 AI 客户端，再由本机 IPC 读取 ALCOMD3 数据；MCP 默认停用，需在 GUI 中启用后新的工具调用才会返回数据。",
+                body: "通过仅监听 127.0.0.1、带 bearer token 的 Streamable HTTP endpoint 接入 AI 客户端，再经私有 IPC 访问 ALCOMD3；MCP 数据访问默认停用。",
             },
             {
                 title: "可见性与受限写工具",
@@ -229,9 +241,15 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         mcpDocsLabel: "MCP 文件",
         mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP 說明",
-        mcpDocsPageDescription: "閱讀 ALCOMD3 本機 MCP bridge 文件，瞭解如何啟用並設定支援 stdio 的 AI 客戶端，查看專案、VPM 儲存庫、套件、環境、活動記錄和技術日誌工具，以及專案建立、登記、備份、複製、還原和單一套件管理的權限邊界、生命週期、速率限制與疑難排解方式，並掌握預設停用、本機 IPC 與記錄脫敏等安全設計。",
+        mcpDocsPageDescription: "閱讀 ALCOMD3 本機 MCP 文件，瞭解如何啟用內建擴充功能，透過帶 bearer token 的本機 Streamable HTTP endpoint 設定 AI 用戶端，並查看生命週期、安全邊界和疑難排解方式。",
+        mcpDocsTableOfContentsLabel: "本頁目錄",
+        mcpGuideNavigationLabel: "MCP 指南",
+        mcpToolsNavigationLabel: "工具參考",
+        mcpToolsPageTitle: "ALCOMD3 MCP 工具參考",
+        mcpToolsPageDescription: "查看 ALCOMD3 目前公開 MCP 工具的輸入欄位、輸出結構、權限邊界、錯誤語意和呼叫範例。",
+        mcpSourceLabel: "文件來源",
         mcpSectionTitle: "可選本機 MCP 整合",
-        mcpSectionDescription: "MCP 文件已開放；本節概括 stdio bridge、本機 IPC、預設停用的資料存取、日誌查詢，以及專案和倉庫相關的受限寫入工具。",
+        mcpSectionDescription: "MCP 文件已開放；本節概括本機 Streamable HTTP endpoint、bearer token、私有 IPC、預設停用的資料存取和受限寫入工具。",
         appAdvantagesTitle: "桌面端體驗與核心優勢",
         appearanceLabel: "外觀",
         appearanceSystem: "跟隨系統",
@@ -240,7 +258,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         title: "ALCOMD3 - 開源 VCC 替代品與 VRChat Unity 專案管理工具",
         description: "ALCOMD3 是源自 ALCOM/vrc-get 的開源 VRChat Creator Companion（VCC）替代工具，用於管理 VRChat Unity 專案、VPM 套件和儲存庫，支援專案建立、備份、複製、還原、更新與 vcc:// 關聯，並提供可選的本機 MCP bridge，方便創作者集中維護專案。",
         twitterDescription: "開源 VRChat Creator Companion（VCC）替代品，面向 VRChat Unity 專案與 VPM 套件管理，提供儲存庫、備份、更新和可選本機 MCP bridge。",
-        structuredDescription: "ALCOMD3 是起源於 ALCOM/vrc-get 的獨立開源桌面工具，可作為 VRChat Creator Companion（VCC）替代品管理 VRChat Unity 專案、VPM 儲存庫和套件，提供備份、更新、vcc:// 關聯以及可選本機 MCP bridge。MCP 透過 stdio 與本機 IPC 提供專案、儲存庫、套件、環境設定、活動記錄和技術日誌可見性，並支援專案建立、既有專案登記、VPM 倉庫登記、備份、複製、還原和單套件安裝、解除安裝、重裝等受限操作。",
+        structuredDescription: "ALCOMD3 是起源於 ALCOM/vrc-get 的獨立開源桌面工具，可作為 VRChat Creator Companion（VCC）替代品管理 VRChat Unity 專案、VPM 儲存庫和套件。MCP 透過只監聽 127.0.0.1、帶 bearer token 的 Streamable HTTP endpoint 和私有 IPC 提供受控的查詢與寫入能力。",
         seoKeywords: [
             "ALCOMD3",
             "VCC替代品",
@@ -318,7 +336,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         advantages: [
             {
                 title: "可選本機 MCP bridge",
-                body: "透過 stdio MCP server 接入支援 MCP 的 AI 客戶端，再由本機 IPC 讀取 ALCOMD3 資料；MCP 預設停用，需在 GUI 中啟用後新的工具呼叫才會傳回資料。",
+                body: "透過只監聽 127.0.0.1、帶 bearer token 的 Streamable HTTP endpoint 接入 AI 用戶端，再經私有 IPC 存取 ALCOMD3；MCP 資料存取預設停用。",
             },
             {
                 title: "可見性與受限寫入工具",
@@ -359,9 +377,15 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         mcpDocsLabel: "MCP ドキュメント",
         mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP ガイド",
-        mcpDocsPageDescription: "ALCOMD3 のローカル MCP bridge ガイド。stdio 対応 AI クライアントへの設定、プロジェクト、VPM リポジトリ、パッケージ、環境、アクティビティ、技術ログの tools、作成、登録、バックアップ、コピー、復元、単一パッケージ操作の権限境界、ライフサイクル、トラブルシューティングを確認できます。",
+        mcpDocsPageDescription: "ALCOMD3 のローカル MCP ガイド。built-in extension の有効化、bearer token 付き Streamable HTTP endpoint の client 設定、ライフサイクル、安全境界、トラブルシューティングを確認できます。",
+        mcpDocsTableOfContentsLabel: "このページの目次",
+        mcpGuideNavigationLabel: "MCP ガイド",
+        mcpToolsNavigationLabel: "ツールリファレンス",
+        mcpToolsPageTitle: "ALCOMD3 MCP ツールリファレンス",
+        mcpToolsPageDescription: "ALCOMD3 が現在公開している MCP ツールの入力、出力、権限境界、エラーセマンティクス、呼び出し例を確認できます。",
+        mcpSourceLabel: "ドキュメントソース",
         mcpSectionTitle: "任意のローカル MCP 連携",
-        mcpSectionDescription: "MCP ドキュメントは公開済みです。このセクションでは stdio bridge、ローカル IPC、既定で無効なデータアクセス、ログ検索、プロジェクトとリポジトリ向けの限定的な書き込み tools を要約します。",
+        mcpSectionDescription: "MCP ドキュメントは公開済みです。このセクションでは local Streamable HTTP endpoint、bearer token、private IPC、既定で無効なデータアクセス、限定的な write tools を要約します。",
         appAdvantagesTitle: "デスクトップ体験と主な強み",
         appearanceLabel: "外観",
         appearanceSystem: "システム設定に従う",
@@ -370,7 +394,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         title: "ALCOMD3 - VRChat Unity プロジェクト向けのオープンソース VCC 代替",
         description: "ALCOMD3 は ALCOM/vrc-get を起源とするオープンソースの VRChat Creator Companion（VCC）代替ツールです。VRChat Unity プロジェクト・VPM パッケージを管理し、作成、バックアップ、復元、更新、vcc:// 関連付け、任意の MCP bridge に対応します。",
         twitterDescription: "VRChat Creator Companion（VCC）のオープンソース代替。VRChat Unity プロジェクトと VPM パッケージ管理、リポジトリ、バックアップ、更新、任意のローカル MCP bridge に対応します。",
-        structuredDescription: "ALCOMD3 は ALCOM/vrc-get を起源とする独立したオープンソースデスクトップツールで、VRChat Creator Companion（VCC）の代替として VRChat Unity プロジェクト、VPM リポジトリ、パッケージを管理し、バックアップ、更新、vcc:// 関連付け、任意のローカル MCP bridge を提供します。MCP は stdio とローカル IPC により、プロジェクト、リポジトリ、パッケージ、環境設定、アクティビティ記録、技術ログの visibility と、プロジェクト作成、既存プロジェクト登録、VPM リポジトリ登録、バックアップ、コピー、復元、単一パッケージのインストール、アンインストール、再インストールなど限定的な操作を提供します。",
+        structuredDescription: "ALCOMD3 は ALCOM/vrc-get を起源とする独立したオープンソースデスクトップツールで、VRChat Creator Companion（VCC）の代替として VRChat Unity プロジェクト、VPM リポジトリ、パッケージを管理します。MCP は 127.0.0.1 のみに bind する bearer token 付き Streamable HTTP endpoint と private IPC を通して、制御された query と write capability を提供します。",
         seoKeywords: [
             "ALCOMD3",
             "VCC 代替",
@@ -448,7 +472,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         advantages: [
             {
                 title: "任意のローカル MCP bridge",
-                body: "stdio MCP server で MCP 対応 AI クライアントに接続し、ローカル IPC 経由で ALCOMD3 データを読み取ります。MCP は既定で無効で、GUI で有効にした後の新しい tool call だけがデータを返します。",
+                body: "127.0.0.1 のみに bind する bearer token 付き Streamable HTTP endpoint で AI client に接続し、private IPC 経由で ALCOMD3 にアクセスします。MCP data access は既定で無効です。",
             },
             {
                 title: "Visibility と限定書き込み tools",
@@ -490,8 +514,14 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         mcpNavigationLabel: "MCP",
         mcpDocsPageTitle: "ALCOMD3 MCP Guide",
         mcpDocsPageDescription: "Learn how to enable and configure the ALCOMD3 local MCP bridge, use its project, repository, package, environment, and log tools, and troubleshoot setup issues.",
+        mcpDocsTableOfContentsLabel: "On this page",
+        mcpGuideNavigationLabel: "MCP guide",
+        mcpToolsNavigationLabel: "Tool reference",
+        mcpToolsPageTitle: "ALCOMD3 MCP tool reference",
+        mcpToolsPageDescription: "Review the inputs, outputs, permission boundaries, error semantics, and examples for every MCP tool currently exposed by ALCOMD3.",
+        mcpSourceLabel: "Documentation source",
         mcpSectionTitle: "Optional Local MCP Integration",
-        mcpSectionDescription: "The MCP docs are available now; this section summarizes the stdio bridge, local IPC, disabled-by-default data access, log queries, and scoped project/repository write tools.",
+        mcpSectionDescription: "The MCP docs cover the local Streamable HTTP endpoint, bearer-token authentication, private IPC, disabled-by-default data access, and scoped write tools.",
         appAdvantagesTitle: "Desktop Experience and Core Strengths",
         appearanceLabel: "Appearance",
         appearanceSystem: "Follow system",
@@ -500,7 +530,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         title: "ALCOMD3 - Open-source VCC alternative for VRChat Unity projects",
         description: "ALCOMD3 is an open-source VCC alternative for managing VRChat Unity projects, VPM packages, repositories, backups, updates, and optional local MCP integration.",
         twitterDescription: "An open-source VRChat Creator Companion (VCC) alternative for VRChat Unity project and VPM package management, with repositories, backups, updates, and optional local MCP bridge.",
-        structuredDescription: "ALCOMD3 is an independent open-source desktop tool that originated from ALCOM/vrc-get. It serves as a VRChat Creator Companion (VCC) alternative for managing VRChat Unity projects, VPM repositories, and packages, with backups, updates, vcc:// association, and optional local MCP bridge. MCP uses stdio and local IPC to give AI agents visibility into projects, repositories, packages, environment settings, activity records, and technical logs, plus scoped operations for project creation, existing project registration, VPM repository registration, backup, copy, restore, and single-package install, uninstall, and reinstall.",
+        structuredDescription: "ALCOMD3 is an independent open-source desktop tool that originated from ALCOM/vrc-get. It serves as a VRChat Creator Companion (VCC) alternative for managing VRChat Unity projects, VPM repositories, and packages. MCP uses a bearer-token-protected Streamable HTTP endpoint bound only to 127.0.0.1 plus private IPC to expose controlled query and write capabilities.",
         seoKeywords: [
             "ALCOMD3",
             "VCC alternative",
@@ -578,7 +608,7 @@ export const locales: Record<LanguageKey, LocaleContent> = {
         advantages: [
             {
                 title: "Optional Local MCP Bridge",
-                body: "Connect MCP-capable AI clients through a stdio MCP server, then read ALCOMD3 data through local IPC. MCP is disabled by default, and new tool calls return data only after it is enabled in the GUI.",
+                body: "Connect AI clients through a bearer-token-protected Streamable HTTP endpoint bound only to 127.0.0.1, then access ALCOMD3 through private IPC. MCP data access is disabled by default.",
             },
             {
                 title: "Visibility and Scoped Write Tools",

@@ -14,7 +14,8 @@ const homeHref = getRelativeLocaleUrl(locale.lang, "");
 const downloadHref = getRelativeLocaleUrl(locale.lang, siteConfig.downloadPath);
 const mcpHref = getRelativeLocaleUrl(locale.lang, siteConfig.mcpDocsPath);
 const isDownloadPage = pagePath === siteConfig.downloadPath;
-const isMcpPage = pagePath === siteConfig.mcpDocsPath;
+const isMcpPage = pagePath === siteConfig.mcpDocsPath
+    || pagePath.startsWith(`${siteConfig.mcpDocsPath}/`);
 const themeOptions = [
     {
         value: "system",

@@ -36,6 +36,7 @@ export const siteConfig = {
     contributorsApiUrl: contributorsApiUrl.href,
     downloadPath: "download",
     mcpDocsPath: "mcp",
+    mcpToolsPath: "mcp/tools",
     ogImagePath: "/assets/og-banner.png",
     ogImageWidth: 2048,
     ogImageHeight: 2048,

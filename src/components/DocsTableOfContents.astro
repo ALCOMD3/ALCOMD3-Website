@@ -1,0 +1,127 @@
+---
+import DocsTocLinks, {
+    type DocsDocumentLink,
+    type DocsTocItem,
+} from "@/components/DocsTocLinks.astro";
+import MaterialIcon from "@/components/MaterialIcon.astro";
+
+type Heading = {
+    depth: number;
+    slug: string;
+    text: string;
+};
+
+type Props = {
+    documents: DocsDocumentLink[];
+    headings: Heading[];
+    label: string;
+};
+
+const { documents, headings, label } = Astro.props;
+const items: DocsTocItem[] = [];
+
+for (const heading of headings) {
+    if (heading.depth === 2) {
+        items.push({
+            slug: heading.slug,
+            text: heading.text,
+            children: [],
+        });
+    } else if (heading.depth === 3 && items.length > 0) {
+        items.at(-1)?.children.push({
+            slug: heading.slug,
+            text: heading.text,
+            children: [],
+        });
+    }
+}
+---
+
+{items.length > 0 && (
+    <>
+        <aside class="docs-toc-sidebar">
+            <div class="docs-toc-surface">
+                <DocsTocLinks documents={documents} items={items} label={label} />
+            </div>
+        </aside>
+
+        <details class="docs-toc-mobile">
+            <summary class="docs-toc-summary">
+                <span>{label}</span>
+                <MaterialIcon class="docs-toc-summary-icon" name="arrow_drop_down" />
+            </summary>
+            <div class="docs-toc-mobile-content">
+                <DocsTocLinks documents={documents} items={items} label={label} />
+            </div>
+        </details>
+    </>
+)}
+
+<script>
+    const tocLinks = Array.from(
+        document.querySelectorAll<HTMLAnchorElement>("[data-docs-toc-link]"),
+    );
+    const mobileToc = document.querySelector<HTMLDetailsElement>(".docs-toc-mobile");
+    const compactLayout = window.matchMedia("(max-width: 64rem)");
+
+    function getLinkHeadingId(link: HTMLAnchorElement) {
+        return decodeURIComponent(link.hash.slice(1));
+    }
+
+    const headingIds = [...new Set(tocLinks.map(getLinkHeadingId))];
+    const headings = headingIds
+        .map((id) => document.getElementById(id))
+        .filter((heading): heading is HTMLElement => heading !== null);
+
+    function setActiveHeading(id: string) {
+        tocLinks.forEach((link) => {
+            const isActive = getLinkHeadingId(link) === id;
+            link.classList.toggle("is-active", isActive);
+
+            if (isActive) {
+                link.setAttribute("aria-current", "location");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+        });
+    }
+
+    if (headings.length > 0) {
+        const initialHeading = headings.find((heading) => (
+            heading.id === decodeURIComponent(window.location.hash.slice(1))
+        )) ?? headings[0];
+        setActiveHeading(initialHeading.id);
+
+        const visibleHeadings = new Set<HTMLElement>();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const heading = entry.target as HTMLElement;
+                if (entry.isIntersecting) {
+                    visibleHeadings.add(heading);
+                } else {
+                    visibleHeadings.delete(heading);
+                }
+            });
+
+            const activeHeading = [...visibleHeadings].sort((first, second) => (
+                first.getBoundingClientRect().top - second.getBoundingClientRect().top
+            ))[0];
+
+            if (activeHeading) {
+                setActiveHeading(activeHeading.id);
+            }
+        }, {
+            rootMargin: "0px 0px -70% 0px",
+        });
+
+        headings.forEach((heading) => observer.observe(heading));
+        tocLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                setActiveHeading(getLinkHeadingId(link));
+                if (mobileToc?.open && compactLayout.matches) {
+                    mobileToc.open = false;
+                }
+            });
+        });
+    }
+</script>

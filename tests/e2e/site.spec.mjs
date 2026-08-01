@@ -3,7 +3,7 @@ import { supportedRouteLocales } from "../../src/data/i18n.config.mjs";
 
 test("all localized routes build and expose the three-control header", async ({ page }) => {
     for (const locale of supportedRouteLocales) {
-        for (const path of ["", "download/", "mcp/"]) {
+        for (const path of ["", "download/", "mcp/", "mcp/tools/"]) {
             const response = await page.goto(`/${locale}/${path}`);
             expect(response?.ok()).toBe(true);
             await expect(page.locator("html")).toHaveAttribute("lang", /.+/);
@@ -91,6 +91,53 @@ test("localized web fonts are preloaded before first paint", async ({ page }) =>
         expect(documentationFontPreloads).toHaveLength(locale === "en-us" ? 6 : 9);
         expect(documentationFontPreloads.some((href) => href.includes("noto-sans-mono"))).toBe(true);
     }
+});
+
+test("the MCP guide exposes a localized nested table of contents", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto("/zh-cn/mcp/");
+
+    const sidebar = page.locator(".docs-toc-sidebar");
+    await expect(sidebar).toBeVisible();
+    await expect(sidebar).toContainText("本页目录");
+    await expect(sidebar.locator(".docs-document-link")).toHaveCount(2);
+    await expect(page.locator(".docs-content")).toContainText("Streamable HTTP");
+    await expect(sidebar.locator('a[href="#可用工具"]')).toBeVisible();
+    await expect(sidebar.locator('a[href="#日志查询工具"]')).toBeVisible();
+    await expect(sidebar.locator(".docs-toc-list-nested")).not.toHaveCount(0);
+    await expect(sidebar.locator('a[href="#快速开始"]')).toHaveAttribute(
+        "aria-current",
+        "location",
+    );
+
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight / 2));
+    await expect.poll(async () => Math.round((await sidebar.boundingBox())?.y ?? -1)).toBe(24);
+    await expect(sidebar.locator('a[href="#快速开始"]')).toBeVisible();
+
+    await sidebar.locator('a[href="#可用工具"]').click();
+    expect(decodeURIComponent(page.url())).toMatch(/#可用工具$/);
+    await expect(page.locator("#可用工具")).toBeVisible();
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/zh-cn/mcp/");
+    const mobileToc = page.locator(".docs-toc-mobile");
+    await expect(sidebar).toBeHidden();
+    await expect(mobileToc).toBeVisible();
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight / 2));
+    await expect.poll(async () => Math.round((await mobileToc.boundingBox())?.y ?? -1)).toBe(12);
+    await mobileToc.locator("summary").click();
+    await expect(mobileToc).toHaveAttribute("open", "");
+    await mobileToc.locator('a[href="#当前边界"]').click();
+    await expect(mobileToc).not.toHaveAttribute("open", "");
+    await expect(page.locator("#当前边界")).toBeVisible();
+
+    await page.goto("/zh-cn/mcp/tools/");
+    await expect(page.locator("h1")).toHaveText("ALCOMD3 MCP 工具参考");
+    await expect(page.locator(".docs-toc-sidebar .docs-document-link.is-current")).toHaveText(
+        "工具参考",
+    );
+    await expect(page.locator(".docs-content")).toContainText("29 个 MCP 工具");
+    await expect(page.locator(".docs-source a")).toHaveText(/ALCOMD3\/ALCOMD3@[0-9a-f]{7}/);
 });
 
 test.describe("without JavaScript", () => {

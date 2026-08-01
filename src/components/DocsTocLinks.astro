@@ -1,0 +1,62 @@
+---
+export type DocsTocItem = {
+    slug: string;
+    text: string;
+    children: DocsTocItem[];
+};
+
+export type DocsDocumentLink = {
+    current: boolean;
+    href: string;
+    label: string;
+};
+
+type Props = {
+    documents: DocsDocumentLink[];
+    items: DocsTocItem[];
+    label: string;
+};
+
+const { documents, items, label } = Astro.props;
+---
+
+<nav class="docs-toc-nav" aria-label={label}>
+    <ul class="docs-document-list">
+        {documents.map((document) => (
+            <li>
+                <a
+                    class:list={["docs-document-link", { "is-current": document.current }]}
+                    href={document.href}
+                    aria-current={document.current ? "page" : undefined}
+                >
+                    {document.label}
+                </a>
+            </li>
+        ))}
+    </ul>
+    <p class="docs-toc-title">{label}</p>
+    <ol class="docs-toc-list">
+        {items.map((item) => (
+            <li>
+                <a class="docs-toc-link" href={`#${item.slug}`} data-docs-toc-link>
+                    {item.text}
+                </a>
+                {item.children.length > 0 && (
+                    <ol class="docs-toc-list docs-toc-list-nested">
+                        {item.children.map((child) => (
+                            <li>
+                                <a
+                                    class="docs-toc-link docs-toc-link-nested"
+                                    href={`#${child.slug}`}
+                                    data-docs-toc-link
+                                >
+                                    {child.text}
+                                </a>
+                            </li>
+                        ))}
+                    </ol>
+                )}
+            </li>
+        ))}
+    </ol>
+</nav>

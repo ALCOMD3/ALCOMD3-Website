@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .astro/
+src/generated/mcp/
 .npm-cache/
 .env
 .env.*

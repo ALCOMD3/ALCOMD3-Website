@@ -47,6 +47,8 @@ const {
 
 const canonicalUrl = getCanonicalUrl(locale.lang, pagePath);
 const alternateLocaleLinks = getAlternateLocaleLinks(pagePath);
+const isMcpDocsPage = pagePath === siteConfig.mcpDocsPath
+    || pagePath.startsWith(`${siteConfig.mcpDocsPath}/`);
 const localeFontStylesheet = {
     "zh-CN": notoSansScStylesheet,
     "zh-TW": notoSansTcStylesheet,
@@ -56,7 +58,7 @@ const localeFontStylesheet = {
 const fontStylesheets = [
     notoSansStylesheet,
     localeFontStylesheet,
-    pagePath === siteConfig.mcpDocsPath ? notoSansMonoStylesheet : null,
+    isMcpDocsPage ? notoSansMonoStylesheet : null,
 ].filter((stylesheet): stylesheet is string => Boolean(stylesheet));
 const latinFontPreloads = [
     notoSansLatin400Font,
@@ -69,7 +71,7 @@ const localeFontPreloads = {
     "ja-JP": [notoSansJp400Font, notoSansJp500Font, notoSansJp700Font],
     "en-US": [],
 }[locale.uiLocale];
-const monoFontPreloads = pagePath === siteConfig.mcpDocsPath
+const monoFontPreloads = isMcpDocsPage
     ? [notoSansMono400Font, notoSansMono500Font, notoSansMono700Font]
     : [];
 const fontPreloads = [

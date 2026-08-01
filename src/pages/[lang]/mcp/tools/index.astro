@@ -22,15 +22,15 @@ type Props = {
 
 const { lang } = Astro.props;
 const locale = locales[lang];
-const pagePath = siteConfig.mcpDocsPath;
+const pagePath = siteConfig.mcpToolsPath;
 const docs = import.meta.glob<MarkdownInstance<Record<string, never>>>(
-    "../../../generated/mcp/*.md",
+    "../../../../generated/mcp/tools/*.md",
     { eager: true },
 );
 const docEntry = Object.entries(docs).find(([path]) => path.endsWith(`/${lang}.md`))?.[1];
 
 if (!docEntry) {
-    throw new Error(`Missing MCP documentation for locale: ${lang}`);
+    throw new Error(`Missing MCP tool reference for locale: ${lang}`);
 }
 
 const Content = docEntry.Content;
@@ -39,30 +39,30 @@ const headings = docEntry.getHeadings().filter(({ depth }) => (
 ));
 const documents = [
     {
-        current: true,
+        current: false,
         href: getRelativeLocaleUrl(lang, siteConfig.mcpDocsPath),
         label: locale.mcpGuideNavigationLabel,
     },
     {
-        current: false,
+        current: true,
         href: getRelativeLocaleUrl(lang, siteConfig.mcpToolsPath),
         label: locale.mcpToolsNavigationLabel,
     },
 ];
-const pageTitle = `${locale.mcpDocsPageTitle} - ${siteConfig.name}`;
+const pageTitle = `${locale.mcpToolsPageTitle} - ${siteConfig.name}`;
 const canonicalUrl = getCanonicalUrl(lang, pagePath);
 const techArticleStructuredData = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    headline: locale.mcpDocsPageTitle,
-    description: locale.mcpDocsPageDescription,
+    headline: locale.mcpToolsPageTitle,
+    description: locale.mcpToolsPageDescription,
     inLanguage: locale.htmlLang,
     url: canonicalUrl,
     mainEntityOfPage: canonicalUrl,
     about: [
         "ALCOMD3",
         "Model Context Protocol",
-        "MCP bridge",
+        "MCP tools",
         "VRChat project management",
     ],
     author: {
@@ -82,9 +82,9 @@ const techArticleStructuredData = {
     locale={locale}
     pagePath={pagePath}
     title={pageTitle}
-    description={locale.mcpDocsPageDescription}
-    twitterDescription={locale.mcpDocsPageDescription}
-    ogImageAlt={locale.mcpDocsPageTitle}
+    description={locale.mcpToolsPageDescription}
+    twitterDescription={locale.mcpToolsPageDescription}
+    ogImageAlt={locale.mcpToolsPageTitle}
     structuredData={techArticleStructuredData}
 >
     <AppHeader locale={locale} pagePath={pagePath} />
